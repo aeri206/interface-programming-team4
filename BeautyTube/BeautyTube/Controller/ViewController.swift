@@ -9,12 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var youtubeManager = YoutubeManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the
     }
 
-
+    @IBAction func fetchData(_ sender: UIButton) {
+        youtubeManager.fetchVideo(searchName: "seoul")
+    }
+    
 }
 

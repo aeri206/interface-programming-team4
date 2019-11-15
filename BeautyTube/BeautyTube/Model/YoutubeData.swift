@@ -7,3 +7,31 @@
 //
 
 import Foundation
+
+struct YoutubeData: Decodable {
+    let items: [Items]
+}
+
+struct Items: Decodable {
+    let snippet: Snippet
+    let id: ID
+}
+
+struct Snippet: Decodable {
+    let title: String
+    let description: String
+    let channelTitle: String
+    let thumbnails: Thumbnails
+}
+
+struct Thumbnails: Decodable {
+    let `default`: Default
+}
+
+struct Default: Decodable {
+    let url: String
+}
+
+struct ID: Decodable {
+    let videoId: String
+}
