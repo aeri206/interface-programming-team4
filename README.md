@@ -1,7 +1,8 @@
 # interface-programming-team4
 2019 Fall Interface Programming
 
-for more information about MVC model checkout [here](https://www.tutorialspoint.com/mvc_framework/mvc_framework_introduction.htm_)
+for more information about MVC design pattern checkout [here](https://medium.com/ios-os-x-development/modern-mvc-39042a9097ca)
+![Image of MVC design Pattern](https://miro.medium.com/max/2608/1*la8KCs0AKSzVGShoLQo2oQ.png)
 
 ## Model
 The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to render data.
