@@ -15,6 +15,7 @@
 		88098B91237EC91600542FC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88098B8F237EC91600542FC4 /* LaunchScreen.storyboard */; };
 		88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88098B9A237EC95B00542FC4 /* YoutubeManager.swift */; };
 		88098B9D237EC96B00542FC4 /* YoutubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88098B9C237EC96B00542FC4 /* YoutubeData.swift */; };
+		88255AEC237F06B4000D4103 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88255AEB237F06B4000D4103 /* YoutubeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		88098B92237EC91600542FC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88098B9A237EC95B00542FC4 /* YoutubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
 		88098B9C237EC96B00542FC4 /* YoutubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeData.swift; sourceTree = "<group>"; };
+		88255AEB237F06B4000D4103 /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				88098B88237EC91400542FC4 /* ViewController.swift */,
+				88255AEB237F06B4000D4103 /* YoutubeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				88098B89237EC91400542FC4 /* ViewController.swift in Sources */,
 				88098B9D237EC96B00542FC4 /* YoutubeData.swift in Sources */,
+				88255AEC237F06B4000D4103 /* YoutubeViewController.swift in Sources */,
 				88098B85237EC91400542FC4 /* AppDelegate.swift in Sources */,
 				88098B87237EC91400542FC4 /* SceneDelegate.swift in Sources */,
 				88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */,
