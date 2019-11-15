@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func fetchData(_ sender: UIButton) {
-        youtubeManager.fetchVideo(searchName: "seoul")
+        youtubeManager.fetchVideo(searchName: "아리따움")
     }
     
 }

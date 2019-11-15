@@ -23,24 +23,24 @@ struct YoutubeManager {
         
         let session = URLSession(configuration: .default)
         
-        guard let url = URL(string: urlString) else {
-            print("URL is nil")
-            return
-        }
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error!)
-                return
+        // 한글, 공백 encoding
+        if let encodedURL = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), let url = URL(string: encodedURL) {
+            
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                if let safeData = data {
+                    self.parseJSON(videoData: safeData)
+                }
             }
             
-            if let safeData = data {
-                self.parseJSON(videoData: safeData)
-            }
+            //4. Start the tast
+            task.resume()
+            
         }
-        
-        //4. Start the tast
-        task.resume()
         
     }
     
