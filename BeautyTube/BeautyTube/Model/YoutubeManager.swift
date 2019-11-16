@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol YoutubeManagerDelegate {
+    func didUpdateVideos(_ youtubeManager: YoutubeManager, with video: YoutubeModel)
+    func didFailWithError(error: Error)
+}
 
 struct YoutubeManager {
     
     let videoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet"
     let APIKey = "AIzaSyCD4_LqV6LtvdiaEWBz_9c03vVMfUNYzHU"
+    
+    var delegate: YoutubeManagerDelegate?
     
     func fetchVideo(searchName: String) {
         let urlString = "\(videoURL)&q=\(searchName)&key=\(APIKey)&maxResults=50&type=video&regionCode=KR"
@@ -28,12 +34,14 @@ struct YoutubeManager {
             
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeData = data {
-                    self.parseJSON(videoData: safeData)
+                    if let videos = self.parseJSON(videoData: safeData) {
+                        self.delegate?.didUpdateVideos(self, with: videos)
+                    }
                 }
             }
             
@@ -45,18 +53,35 @@ struct YoutubeManager {
     }
     
     
-    func parseJSON(videoData: Data){
+    func parseJSON(videoData: Data) -> YoutubeModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(YoutubeData.self, from: videoData)
-            print("제목: \(decodedData.items[0].snippet.title)")
-            print("설명: \(decodedData.items[0].snippet.description)")
-            print("채널명: \(decodedData.items[0].snippet.channelTitle)")
-            print("썸네일 URL: \(decodedData.items[0].snippet.thumbnails.default.url)")
-            print("video URL: https://www.youtube.com/watch?v=\(decodedData.items[0].id.videoId)")
+            
+            // initialization of YoutubeModel
+            var videoData = VideoData(title: "", description: "", channelTitle: "", imageURL: "", videoURL: "")
+            var dataModel = YoutubeModel(data: [videoData])
+            dataModel.data.removeAll()
+            
+            // parsing & inserting datas into YoutubeModel
+            for i in 0..<decodedData.items.count {
+                
+                let items = decodedData.items[i]
+                
+                let title = items.snippet.title
+                let description = items.snippet.description
+                let channelTitle = items.snippet.channelTitle
+                let imageURL = items.snippet.thumbnails.default.url
+                let videoURL = "https://www.youtube.com/watch?v=\(items.id.videoId)"
+                
+                videoData = VideoData(title: title, description: description, channelTitle: channelTitle, imageURL: imageURL, videoURL: videoURL)
+                dataModel.data.append(videoData)
+            }
+            return dataModel
             
         } catch {
-            print(error)
+            self.delegate?.didFailWithError(error: error)
+            return nil
         }
         
     }
