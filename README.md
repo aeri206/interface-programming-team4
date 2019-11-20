@@ -23,7 +23,7 @@ Delegate(`YoutubeViewController`)은 이 method에 검색어를 parameter로 넘
 #### func performRequest(urlString: String)
 넘겨받은 url을 사용해 `URLSession`과 `URLSession.dataTask(with: url)`을 생성, data를 받아오는 함수입니다. 실패시 delegate method인 `didFailWithError()`를 호출하고, 성공시에는 `YoutubeManager.parseJSON(with: safeData)`를 호출합니다. 
 
-#### func parseJSON(videoData: Data) -> YoutubeModel?
+#### func parseJSON(with: Data) -> YoutubeModel?
 1. `Foundation` 라이브러리 내장함수인  `JSONDecoder()`를 사용해 받아온 JSONdata를 parsing합니다.
 3. 미리 준비된 data model(`YoutubeModel`)에 집어넣는 함수입니다. 
 
