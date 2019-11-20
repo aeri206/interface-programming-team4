@@ -40,7 +40,7 @@ struct YoutubeManager {
                 }
                 
                 if let safeData = data {
-                    if let videos = self.parseJSON(videoData: safeData) {
+                    if let videos = self.parseJSON(with: safeData) {
                         self.delegate?.didUpdateVideos(self, with: videos)
                     }
                 }
@@ -54,7 +54,7 @@ struct YoutubeManager {
     }
     
     
-    func parseJSON(videoData: Data) -> YoutubeModel? {
+    func parseJSON(with videoData: Data) -> YoutubeModel? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(YoutubeData.self, from: videoData)
