@@ -1,7 +1,7 @@
 # interface-programming-team4
 2019 Fall Interface Programming
 
-for more information about MVC design pattern checkout [here](https://medium.com/ios-os-x-development/modern-mvc-39042a9097ca)
+for more information about MVC design pattern checkout [here](https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336) or [here](https://medium.com/ios-os-x-development/modern-mvc-39042a9097ca)
 
 ![Image of MVC design Pattern](http://natashatherobot.com/wp-content/uploads/Screen-Shot-2014-04-28-at-6.13.10-AM.png)
 
