@@ -7,15 +7,12 @@
 //
 
 import Foundation
+// # 동영상 정보를 내부적으로 활용하기 위한 구조
 
 struct YoutubeModel {
     var data: [VideoData]
 }
 
 struct VideoData {
-    let title: String
-    let description: String
-    let channelTitle: String
-    let imageURL: String
-    let videoURL: String
+    let title, description, channelTitle, imageURL, videoURL: String
 }

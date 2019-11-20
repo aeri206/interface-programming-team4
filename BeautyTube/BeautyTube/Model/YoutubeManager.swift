@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// # Youtube API를 사용해 동영상 정보를 불러오는 Model
 
 protocol YoutubeManagerDelegate {
     func didUpdateVideos(_ youtubeManager: YoutubeManager, with video: YoutubeModel)

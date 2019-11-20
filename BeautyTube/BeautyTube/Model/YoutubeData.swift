@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// # 불러온 동영상 정보(JSON)를 Parsing할 때 사용하는 data 구조
 
 struct YoutubeData: Decodable {
     let items: [Items]
