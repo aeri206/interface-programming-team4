@@ -11,4 +11,5 @@ import Foundation
 struct K {
     static let videoSearchResultSegue = "goToResult"
     static let tableCellIdentifier = "ReusableCell"
+    static let cellNibName = "YoutubeCell"
 }

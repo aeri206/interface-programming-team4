@@ -14,5 +14,5 @@ struct YoutubeModel {
 }
 
 struct VideoData {
-    let title, description, channelTitle, imageURL, videoURL: String
+    let title, description, channelTitle, imageURL, videoURL, dateTime: String
 }

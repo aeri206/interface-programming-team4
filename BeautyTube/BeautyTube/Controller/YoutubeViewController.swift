@@ -22,6 +22,9 @@ class YoutubeViewController: UIViewController {
         youtubeManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        title = searchText ?? ""
+        
+        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCellIdentifier)
         
         if let text = searchText {
             youtubeManager.fetchVideo(searchName: text)
@@ -37,7 +40,6 @@ extension YoutubeViewController: YoutubeManagerDelegate {
     func didUpdateVideos(_ youtubeManager: YoutubeManager, with video: YoutubeModel) {
         DispatchQueue.main.sync {
             videoData = video
-            print(video)
             self.tableView.reloadData()
         }
         
@@ -55,9 +57,18 @@ extension YoutubeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCellIdentifier, for: indexPath) as! YoutubeCell
+        let url = URL(string: (videoData?.data[indexPath.row].imageURL ?? "https://media.flixcar.com/delivery/static/inpage/9/images/loading.gif"))
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
         
-        cell.textLabel?.text = videoData?.data[indexPath.row].title
+        
+        cell.titleLabel.text =
+            videoData?.data[indexPath.row].title
+        cell.channelTitleLabel.text = videoData?.data[indexPath.row].channelTitle
+        cell.dateTimeLabel.text = videoData?.data[indexPath.row].dateTime
+        cell.thumbnailImageView.image =  UIImage(data: data!)
+        
+        
         return cell
     }
     

@@ -22,14 +22,15 @@ struct Snippet: Decodable {
     let title: String
     let description: String
     let channelTitle: String
+    let publishedAt: String
     let thumbnails: Thumbnails
 }
 
 struct Thumbnails: Decodable {
-    let `default`: Default
+    let medium: Medium
 }
 
-struct Default: Decodable {
+struct Medium: Decodable {
     let url: String
 }
 

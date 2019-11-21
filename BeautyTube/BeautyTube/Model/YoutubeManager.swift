@@ -60,7 +60,7 @@ struct YoutubeManager {
             let decodedData = try decoder.decode(YoutubeData.self, from: videoData)
             
             // initialization of YoutubeModel
-            var videoData = VideoData(title: "", description: "", channelTitle: "", imageURL: "", videoURL: "")
+            var videoData = VideoData(title: "", description: "", channelTitle: "", imageURL: "", videoURL: "", dateTime: "")
             var dataModel = YoutubeModel(data: [videoData])
             dataModel.data.removeAll()
             
@@ -72,10 +72,11 @@ struct YoutubeManager {
                 let title = items.snippet.title
                 let description = items.snippet.description
                 let channelTitle = items.snippet.channelTitle
-                let imageURL = items.snippet.thumbnails.default.url
+                let imageURL = items.snippet.thumbnails.medium.url
                 let videoURL = "https://www.youtube.com/watch?v=\(items.id.videoId)"
+                let dateTime = items.snippet.publishedAt
                 
-                videoData = VideoData(title: title, description: description, channelTitle: channelTitle, imageURL: imageURL, videoURL: videoURL)
+                videoData = VideoData(title: title, description: description, channelTitle: channelTitle, imageURL: imageURL, videoURL: videoURL, dateTime: dateTime)
                 dataModel.data.append(videoData)
             }
             return dataModel
