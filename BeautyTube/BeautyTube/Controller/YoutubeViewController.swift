@@ -9,7 +9,7 @@
 import UIKit
 
 class YoutubeViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var youtubeManager = YoutubeManager()
@@ -18,7 +18,7 @@ class YoutubeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         youtubeManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,8 +58,9 @@ extension YoutubeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCellIdentifier, for: indexPath) as! YoutubeCell
-        let url = URL(string: (videoData?.data[indexPath.row].imageURL ?? "https://media.flixcar.com/delivery/static/inpage/9/images/loading.gif"))
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        
+        let url = URL(string: videoData?.data[indexPath.row].imageURL ?? "https://cdn.shopify.com/s/files/1/0783/9473/t/3/assets/twitter-white.png?0")
+        let data = try? Data(contentsOf: url!)
         
         
         cell.titleLabel.text =
@@ -79,7 +80,12 @@ extension YoutubeViewController: UITableViewDataSource {
 extension YoutubeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        print(videoData?.data[indexPath.row].videoURL ?? indexPath.row)
+        
+        if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
+          UIApplication.shared.open(link)
+        }
+        
     }
-    
+
 }
