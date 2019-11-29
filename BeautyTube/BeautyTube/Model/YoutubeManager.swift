@@ -55,12 +55,19 @@ struct YoutubeManager {
     
     
     func parseJSON(with videoData: Data) -> YoutubeModel? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        
         do {
             let decodedData = try decoder.decode(YoutubeData.self, from: videoData)
             
             // initialization of YoutubeModel
-            var videoData = VideoData(title: "", description: "", channelTitle: "", imageURL: "", videoURL: "", dateTime: "")
+            var videoData = VideoData(title: "", description: "", channelTitle: "", imageURL: "", videoURL: "", dateTime: Date.init())
             var dataModel = YoutubeModel(data: [videoData])
             dataModel.data.removeAll()
             
@@ -69,14 +76,15 @@ struct YoutubeManager {
                 
                 let items = decodedData.items[i]
                 
-                let title = items.snippet.title
+                let title = items.snippet.title.html2AttributedString?.string
                 let description = items.snippet.description
                 let channelTitle = items.snippet.channelTitle
                 let imageURL = items.snippet.thumbnails.medium.url
                 let videoURL = "https://www.youtube.com/watch?v=\(items.id.videoId)"
+                
                 let dateTime = items.snippet.publishedAt
                 
-                videoData = VideoData(title: title, description: description, channelTitle: channelTitle, imageURL: imageURL, videoURL: videoURL, dateTime: dateTime)
+                videoData = VideoData(title: title!, description: description, channelTitle: channelTitle, imageURL: imageURL, videoURL: videoURL, dateTime: dateTime)
                 dataModel.data.append(videoData)
             }
             return dataModel
@@ -88,4 +96,19 @@ struct YoutubeManager {
         
     }
 }
+
+// MARK: - HTML to Attributed String
+// Convert Unicode symbol or its XML/HTML entities into its Unicode number in Swift
+extension String {
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: Data(utf8), options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    var unicodes: [UInt32] { return unicodeScalars.map{$0.value} }
+}
+
 

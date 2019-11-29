@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateToolsSwift
 
 class YoutubeViewController: UIViewController {
     
@@ -66,7 +67,7 @@ extension YoutubeViewController: UITableViewDataSource {
         cell.titleLabel.text =
             videoData?.data[indexPath.row].title
         cell.channelTitleLabel.text = videoData?.data[indexPath.row].channelTitle
-        cell.dateTimeLabel.text = videoData?.data[indexPath.row].dateTime
+        cell.dateTimeLabel.text = videoData?.data[indexPath.row].dateTime.timeAgoSinceNow
         cell.thumbnailImageView.image =  UIImage(data: data!)
         
         
@@ -80,12 +81,14 @@ extension YoutubeViewController: UITableViewDataSource {
 extension YoutubeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(videoData?.data[indexPath.row].videoURL ?? indexPath.row)
+        print(videoData?.data[indexPath.row].dateTime ?? indexPath.row)
         
-        if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
-          UIApplication.shared.open(link)
-        }
+        
+//        if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
+//          UIApplication.shared.open(link)
+//        }
         
     }
 
 }
+

@@ -20,9 +20,12 @@
 		88255AF0237F1A6D000D4103 /* YoutubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88255AEF237F1A6D000D4103 /* YoutubeModel.swift */; };
 		88CD353323844C6400CC1331 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD353223844C6400CC1331 /* K.swift */; };
 		88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD35342384559800CC1331 /* YoutubeViewController.swift */; };
+		96D626DC7A8EDDE1FE4CC143 /* Pods_BeautyTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF8E4110CA604828A730B6C /* Pods_BeautyTube.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		247E1D892CF04CDA6C0EE586 /* Pods-BeautyTube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautyTube.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeautyTube/Pods-BeautyTube.release.xcconfig"; sourceTree = "<group>"; };
+		4EF8E4110CA604828A730B6C /* Pods_BeautyTube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeautyTube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88098B81237EC91400542FC4 /* BeautyTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeautyTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88098B84237EC91400542FC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88098B86237EC91400542FC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		88255AEF237F1A6D000D4103 /* YoutubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeModel.swift; sourceTree = "<group>"; };
 		88CD353223844C6400CC1331 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		88CD35342384559800CC1331 /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
+		88F4A5462390EF7B007A867A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		88F4A5472390EF7B007A867A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8B9D1B2F969051C297374E82 /* Pods-BeautyTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautyTube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeautyTube/Pods-BeautyTube.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D626DC7A8EDDE1FE4CC143 /* Pods_BeautyTube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		264317F01002817A11165797 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B9D1B2F969051C297374E82 /* Pods-BeautyTube.debug.xcconfig */,
+				247E1D892CF04CDA6C0EE586 /* Pods-BeautyTube.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		88098B78237EC91300542FC4 = {
 			isa = PBXGroup;
 			children = (
 				88098B83237EC91400542FC4 /* BeautyTube */,
 				88098B82237EC91400542FC4 /* Products */,
+				264317F01002817A11165797 /* Pods */,
+				B6075DE4D98003A40225A51F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +130,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B6075DE4D98003A40225A51F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EF8E4110CA604828A730B6C /* Pods_BeautyTube.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88098B95237EC91600542FC4 /* Build configuration list for PBXNativeTarget "BeautyTube" */;
 			buildPhases = (
+				3A6ADDF92A86C49E71D38EA1 /* [CP] Check Pods Manifest.lock */,
 				88098B7D237EC91400542FC4 /* Sources */,
 				88098B7E237EC91400542FC4 /* Frameworks */,
 				88098B7F237EC91400542FC4 /* Resources */,
+				652622B76F9F3F4684002563 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +182,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 88098B78237EC91300542FC4;
 			productRefGroup = 88098B82237EC91400542FC4 /* Products */;
@@ -179,6 +208,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A6ADDF92A86C49E71D38EA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeautyTube-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		652622B76F9F3F4684002563 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeautyTube/Pods-BeautyTube-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeautyTube/Pods-BeautyTube-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeautyTube/Pods-BeautyTube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88098B7D237EC91400542FC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +274,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88098B8B237EC91400542FC4 /* Base */,
+				88F4A5462390EF7B007A867A /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -211,6 +283,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				88098B90237EC91600542FC4 /* Base */,
+				88F4A5472390EF7B007A867A /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -222,6 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -282,6 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -334,11 +409,13 @@
 		};
 		88098B96237EC91600542FC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B9D1B2F969051C297374E82 /* Pods-BeautyTube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GW7UH6P7ST;
 				INFOPLIST_FILE = BeautyTube/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -352,11 +429,13 @@
 		};
 		88098B97237EC91600542FC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 247E1D892CF04CDA6C0EE586 /* Pods-BeautyTube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GW7UH6P7ST;
 				INFOPLIST_FILE = BeautyTube/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
