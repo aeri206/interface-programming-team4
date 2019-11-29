@@ -84,9 +84,9 @@ extension YoutubeViewController: UITableViewDelegate {
         print(videoData?.data[indexPath.row].dateTime ?? indexPath.row)
         
         
-//        if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
-//          UIApplication.shared.open(link)
-//        }
+        if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
+          UIApplication.shared.open(link)
+        }
         
     }
 
