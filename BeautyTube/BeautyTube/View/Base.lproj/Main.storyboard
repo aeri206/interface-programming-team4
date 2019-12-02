@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +50,7 @@
             <objects>
                 <viewController id="bsu-aH-bEg" customClass="YoutubeViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="phn-qk-MPU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6a-Ob-fzU">
@@ -85,12 +86,67 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="p9j-L1-gzW"/>
+                        <segue destination="H6S-HS-ypf" kind="relationship" relationship="rootViewController" id="ODy-L3-HGP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vo-1d-WNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="YGR-yz-5c7">
+            <objects>
+                <collectionViewController id="H6S-HS-ypf" customClass="CategoryViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Agc-Df-VHD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ozj-gh-5vv">
+                            <size key="itemSize" width="99" height="99"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="eAP-f7-Hj4" customClass="CategoryCell" customModule="BeautyTube" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eBo-jJ-1dm">
+                                    <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWE-Y9-YuL">
+                                            <rect key="frame" x="28" y="39" width="43" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bWE-Y9-YuL" firstAttribute="centerX" secondItem="eBo-jJ-1dm" secondAttribute="centerX" id="7Ss-y2-7Ch"/>
+                                        <constraint firstItem="bWE-Y9-YuL" firstAttribute="centerY" secondItem="eBo-jJ-1dm" secondAttribute="centerY" id="wIa-Ie-aMe"/>
+                                        <constraint firstItem="bWE-Y9-YuL" firstAttribute="leading" secondItem="eBo-jJ-1dm" secondAttribute="leading" constant="28" id="wmL-9v-Fej"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="99" height="99"/>
+                                <connections>
+                                    <outlet property="categoryName" destination="bWE-Y9-YuL" id="htQ-Vi-H3z"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="H6S-HS-ypf" id="o37-85-1KI"/>
+                            <outlet property="delegate" destination="H6S-HS-ypf" id="cUA-OG-n8I"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="0aB-d1-eRK"/>
+                    <connections>
+                        <outlet property="category" destination="Agc-Df-VHD" id="sxJ-GH-eB7"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jng-or-oaV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631.8840579710145" y="-582.58928571428567"/>
         </scene>
     </scenes>
 </document>

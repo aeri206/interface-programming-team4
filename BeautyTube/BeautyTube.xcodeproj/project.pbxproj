@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,9 @@
 		88CD353323844C6400CC1331 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD353223844C6400CC1331 /* K.swift */; };
 		88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD35342384559800CC1331 /* YoutubeViewController.swift */; };
 		96D626DC7A8EDDE1FE4CC143 /* Pods_BeautyTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF8E4110CA604828A730B6C /* Pods_BeautyTube.framework */; };
+		CE288EE72394A68800B8E477 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE288EE62394A68800B8E477 /* CategoryViewController.swift */; };
+		CE288EEC2394CB0600B8E477 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE288EEA2394CB0600B8E477 /* CategoryCell.swift */; };
+		CE288EED2394CB0600B8E477 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE288EEB2394CB0600B8E477 /* CategoryCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		88F4A5462390EF7B007A867A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		88F4A5472390EF7B007A867A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8B9D1B2F969051C297374E82 /* Pods-BeautyTube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeautyTube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeautyTube/Pods-BeautyTube.debug.xcconfig"; sourceTree = "<group>"; };
+		CE288EE62394A68800B8E477 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CE288EEA2394CB0600B8E477 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		CE288EEB2394CB0600B8E477 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 			children = (
 				88098B88237EC91400542FC4 /* ViewController.swift */,
 				88CD35342384559800CC1331 /* YoutubeViewController.swift */,
+				CE288EE62394A68800B8E477 /* CategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 				88098B8A237EC91400542FC4 /* Main.storyboard */,
 				8813FE2D2386E1EF007546CD /* YoutubeCell.swift */,
 				8813FE2E2386E1EF007546CD /* YoutubeCell.xib */,
+				CE288EEA2394CB0600B8E477 /* CategoryCell.swift */,
+				CE288EEB2394CB0600B8E477 /* CategoryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE288EED2394CB0600B8E477 /* CategoryCell.xib in Resources */,
 				88098B91237EC91600542FC4 /* LaunchScreen.storyboard in Resources */,
 				8813FE302386E1EF007546CD /* YoutubeCell.xib in Resources */,
 				88098B8E237EC91600542FC4 /* Assets.xcassets in Resources */,
@@ -255,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE288EE72394A68800B8E477 /* CategoryViewController.swift in Sources */,
 				88098B89237EC91400542FC4 /* ViewController.swift in Sources */,
 				88098B9D237EC96B00542FC4 /* YoutubeData.swift in Sources */,
 				88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */,
@@ -264,6 +275,7 @@
 				88098B87237EC91400542FC4 /* SceneDelegate.swift in Sources */,
 				88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */,
 				8813FE2F2386E1EF007546CD /* YoutubeCell.swift in Sources */,
+				CE288EEC2394CB0600B8E477 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
