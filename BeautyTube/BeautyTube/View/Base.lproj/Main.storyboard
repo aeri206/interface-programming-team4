@@ -86,12 +86,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="H6S-HS-ypf" kind="relationship" relationship="rootViewController" id="x5C-vB-Eko"/>
+                        <segue destination="H6S-HS-ypf" kind="relationship" relationship="rootViewController" id="lzF-nB-IZQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vo-1d-WNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277" y="98"/>
+            <point key="canvasLocation" x="-217" y="-583"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="YGR-yz-5c7">
@@ -196,11 +196,38 @@
                     <navigationItem key="navigationItem" id="r7w-iB-QUh"/>
                     <connections>
                         <outlet property="subCategory" destination="3bT-Tm-bHH" id="tUf-zq-bi0"/>
+                        <segue destination="wTf-Ag-C8L" kind="show" identifier="SelectSubCategory" id="f49-gK-tcV"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJ7-jp-PHz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1472.4637681159422" y="-584.59821428571422"/>
+            <point key="canvasLocation" x="1430" y="-583"/>
+        </scene>
+        <!--Product View Controller-->
+        <scene sceneID="QHu-DJ-zFz">
+            <objects>
+                <viewController id="wTf-Ag-C8L" customClass="ProductViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="84t-fW-SjW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="l80-PR-8B4">
+                                <rect key="frame" x="0.0" y="126" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dVk-TK-H01"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Gj-PI-s3V"/>
+                    <connections>
+                        <outlet property="productTable" destination="l80-PR-8B4" id="vAx-a0-U8n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5x-M9-wub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2242" y="-583"/>
         </scene>
     </scenes>
 </document>

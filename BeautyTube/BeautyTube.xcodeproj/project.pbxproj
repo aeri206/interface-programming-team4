@@ -27,6 +27,12 @@
 		CE6E1C64239D0AA700E8A06D /* SubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */; };
 		CE6E1C65239D0AA700E8A06D /* SubCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6E1C63239D0AA700E8A06D /* SubCategoryCell.xib */; };
 		CE6E1C67239D0AFD00E8A06D /* SubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */; };
+		CE6E1C6B239D4C3B00E8A06D /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C6A239D4C3B00E8A06D /* ProductViewController.swift */; };
+		CE6E1C6D239D4C5E00E8A06D /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C6C239D4C5E00E8A06D /* ProductModel.swift */; };
+		CE6E1C6F239D586F00E8A06D /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C6E239D586F00E8A06D /* ProductManager.swift */; };
+		CE6E1C71239D6AB400E8A06D /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C70239D6AB400E8A06D /* ProductData.swift */; };
+		CE6E1C74239D7E4100E8A06D /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C72239D7E4100E8A06D /* ProductCell.swift */; };
+		CE6E1C75239D7E4100E8A06D /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6E1C73239D7E4100E8A06D /* ProductCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +62,12 @@
 		CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryCell.swift; sourceTree = "<group>"; };
 		CE6E1C63239D0AA700E8A06D /* SubCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCategoryCell.xib; sourceTree = "<group>"; };
 		CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryViewController.swift; sourceTree = "<group>"; };
+		CE6E1C6A239D4C3B00E8A06D /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		CE6E1C6C239D4C5E00E8A06D /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		CE6E1C6E239D586F00E8A06D /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
+		CE6E1C70239D6AB400E8A06D /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
+		CE6E1C72239D7E4100E8A06D /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		CE6E1C73239D7E4100E8A06D /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +130,7 @@
 			children = (
 				88098B88237EC91400542FC4 /* ViewController.swift */,
 				88CD35342384559800CC1331 /* YoutubeViewController.swift */,
+				CE6E1C6A239D4C3B00E8A06D /* ProductViewController.swift */,
 				CE288EE62394A68800B8E477 /* CategoryViewController.swift */,
 				CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */,
 			);
@@ -129,6 +142,8 @@
 			children = (
 				88098B8A237EC91400542FC4 /* Main.storyboard */,
 				8813FE2D2386E1EF007546CD /* YoutubeCell.swift */,
+				CE6E1C72239D7E4100E8A06D /* ProductCell.swift */,
+				CE6E1C73239D7E4100E8A06D /* ProductCell.xib */,
 				8813FE2E2386E1EF007546CD /* YoutubeCell.xib */,
 				CE288EEA2394CB0600B8E477 /* CategoryCell.swift */,
 				CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */,
@@ -144,6 +159,9 @@
 				88098B9A237EC95B00542FC4 /* YoutubeManager.swift */,
 				88098B9C237EC96B00542FC4 /* YoutubeData.swift */,
 				88255AEF237F1A6D000D4103 /* YoutubeModel.swift */,
+				CE6E1C6C239D4C5E00E8A06D /* ProductModel.swift */,
+				CE6E1C6E239D586F00E8A06D /* ProductManager.swift */,
+				CE6E1C70239D6AB400E8A06D /* ProductData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +237,7 @@
 			files = (
 				CE6E1C65239D0AA700E8A06D /* SubCategoryCell.xib in Resources */,
 				CE288EED2394CB0600B8E477 /* CategoryCell.xib in Resources */,
+				CE6E1C75239D7E4100E8A06D /* ProductCell.xib in Resources */,
 				88098B91237EC91600542FC4 /* LaunchScreen.storyboard in Resources */,
 				8813FE302386E1EF007546CD /* YoutubeCell.xib in Resources */,
 				88098B8E237EC91600542FC4 /* Assets.xcassets in Resources */,
@@ -279,13 +298,18 @@
 				88098B89237EC91400542FC4 /* ViewController.swift in Sources */,
 				88098B9D237EC96B00542FC4 /* YoutubeData.swift in Sources */,
 				88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */,
+				CE6E1C6D239D4C5E00E8A06D /* ProductModel.swift in Sources */,
 				CE6E1C64239D0AA700E8A06D /* SubCategoryCell.swift in Sources */,
 				88098B85237EC91400542FC4 /* AppDelegate.swift in Sources */,
 				88255AF0237F1A6D000D4103 /* YoutubeModel.swift in Sources */,
 				88CD353323844C6400CC1331 /* K.swift in Sources */,
 				88098B87237EC91400542FC4 /* SceneDelegate.swift in Sources */,
 				88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */,
+				CE6E1C6F239D586F00E8A06D /* ProductManager.swift in Sources */,
+				CE6E1C71239D6AB400E8A06D /* ProductData.swift in Sources */,
+				CE6E1C6B239D4C3B00E8A06D /* ProductViewController.swift in Sources */,
 				CE6E1C67239D0AFD00E8A06D /* SubCategoryViewController.swift in Sources */,
+				CE6E1C74239D7E4100E8A06D /* ProductCell.swift in Sources */,
 				8813FE2F2386E1EF007546CD /* YoutubeCell.swift in Sources */,
 				CE288EEC2394CB0600B8E477 /* CategoryCell.swift in Sources */,
 			);

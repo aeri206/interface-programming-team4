@@ -13,11 +13,14 @@ class SubCategoryViewController: UICollectionViewController {
     
     @IBOutlet weak var subCategory: UICollectionView!
     var categoryInt: Int?
+    var subCategoryInt: Int?
     var subCategoryNames = [String]()
     var subCategoryInfo = [
+        // 0부터 시작한다고 가정.
+        -1:[],
         0:["토너/필링패드","스킨", "에센스", "크림", "페이스오일", "로션", "메이크업픽서", "미스트"],
         1:["클렌징폼", "클렌징오일", "클렌징밀크", "클렌징크림", "클렌징워터", "클렌징젤", "스크럽/필링", "포인트리무버", "클렌징티슈", "클렌징비누"],
-        2:["메이크업베이스", "톤업크림", "베이스프라이머", "포인트프라이머", "파운데이션", "비비크림", "씨씨크림", "쿠션타입", "컨실러"],
+        2:["메이크업베이스", "톤업크림", "베이스프라이머", "포인트프라이머", "파운데이션", "비비크림", "씨씨크림", "쿠션타입", "컨실러","팩트","파우더","트윈케익"],
         3:["립스틱", "립글로스/락커", "립틴트", "립밤", "립라이너", "아이라이너-펜슬&젤", "아이라이너-리퀴드", "마스카라", "픽서/영양제", "아이섀도우", "아이브로우-펜슬", "아이브로우-파우더", "아이브로우-마스카라&리퀴드", "하이라이터", "쉐딩", "블러셔"],
         4:["마스크시트", "수면팩", "워시오프", "필오프", "수딩젤/팩", "코팩"],
         5:["선블록", "선스프레이", "선스틱", "선쿠션", "태닝"],
@@ -91,22 +94,35 @@ class SubCategoryViewController: UICollectionViewController {
 
         }
     
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    func calculateCategoryID(category: Int?, subCategory: Int?) -> Int {
+        var res = 0
+        if let id = category {
+            for i in -1...id-1 {
+                res += subCategoryInfo[i]!.count
+                }
+        }
+        if let subId = subCategory {
+            res += subId
+        }
+        return res
     }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if segue.identifier == K.selectSubCategorySegue {
+            let destVC = segue.destination as! ProductViewController
+            if let categoryID = self.subCategoryInt {
+                destVC.categoryID = categoryID
+            }
+        }
     }
-    */
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:indexPath.row)
+        print(self.subCategoryInt ?? -1)
+        self.performSegue(withIdentifier: K.selectSubCategorySegue, sender: self)
+        
+    }
+    
+    
 }
