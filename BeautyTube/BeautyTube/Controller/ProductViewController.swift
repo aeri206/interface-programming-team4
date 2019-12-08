@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductViewController: UIViewController {
+class ProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     @IBOutlet weak var productTable: UITableView!
@@ -16,13 +16,14 @@ class ProductViewController: UIViewController {
     var categoryID: Int?
     var productManager = ProductManager()
     var productData: ProductModel?
+    var searchProduct: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        productManager.delegate = self
+        productManager.delegate = self as? ProductManagerDelegate
         productTable.delegate = self as? UITableViewDelegate
-        productTable.dataSource = self
+        productTable.dataSource = self as? UITableViewDataSource
         
         productTable.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
         
@@ -31,7 +32,21 @@ class ProductViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확ㅇ
+            let destinationVC = segue.destination as! YoutubeViewController
+            
+            if let text = self.searchProduct {
+                destinationVC.searchText = text
+            }
+        }
+    }
+    
+
+    
 }
+
+
 
 extension ProductViewController: ProductManagerDelegate {
     func didFailWithError(error: Error) {
@@ -44,26 +59,26 @@ extension ProductViewController: ProductManagerDelegate {
         if Thread.isMainThread {
           // do stuff
             productData = product
-            print(self.productData ?? "no dataa")
+            //print(self.productData ?? "no dataa")
             self.productTable.reloadData()
         } else {
         DispatchQueue.main.sync {
             productData = product
-            print(self.productData ?? "no dataa")
+            // print(self.productData ?? "no dataa")
             self.productTable.reloadData()
             }
         }
     }
 }
 
-extension ProductViewController: UITableViewDataSource {
+extension ProductViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductCell
         
         let url = URL(string: productData?.data[indexPath.row].img_url ?? "")
-        print(url)
+        // print(url)
         // let data = try? Data(contentsOf: url!)
         
         // cell.thumbnailImageView.image = UIImage(data: data!)
@@ -75,6 +90,15 @@ extension ProductViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productData?.data.count ?? 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(productData?.data[indexPath.row] ?? "")
+        self.searchProduct = productData?.data[indexPath.row].name
+        self.performSegue(withIdentifier: K.videoSearchResultSegue, sender: self)
+        // TODO ; Change Identifier
+        
     }
     
 }

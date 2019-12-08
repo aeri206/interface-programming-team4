@@ -38,7 +38,6 @@
                     <navigationItem key="navigationItem" id="sHZ-v2-TJT"/>
                     <connections>
                         <outlet property="searchTextField" destination="JV9-KZ-O9b" id="fam-Bm-xXY"/>
-                        <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="MtX-Bs-6Ug"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -50,7 +49,7 @@
             <objects>
                 <viewController id="bsu-aH-bEg" customClass="YoutubeViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="phn-qk-MPU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6a-Ob-fzU">
@@ -73,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlA-1y-Uoj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976.8115942028987" y="97.767857142857139"/>
+            <point key="canvasLocation" x="2983" y="-583"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UFA-YY-Om7">
@@ -211,7 +210,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="l80-PR-8B4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l80-PR-8B4">
                                 <rect key="frame" x="0.0" y="126" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -223,6 +222,7 @@
                     <navigationItem key="navigationItem" id="6Gj-PI-s3V"/>
                     <connections>
                         <outlet property="productTable" destination="l80-PR-8B4" id="vAx-a0-U8n"/>
+                        <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="p52-v0-H2O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5x-M9-wub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
