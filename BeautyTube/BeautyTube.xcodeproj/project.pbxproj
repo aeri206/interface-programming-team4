@@ -24,6 +24,9 @@
 		CE288EE72394A68800B8E477 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE288EE62394A68800B8E477 /* CategoryViewController.swift */; };
 		CE288EEC2394CB0600B8E477 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE288EEA2394CB0600B8E477 /* CategoryCell.swift */; };
 		CE288EED2394CB0600B8E477 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE288EEB2394CB0600B8E477 /* CategoryCell.xib */; };
+		CE6E1C64239D0AA700E8A06D /* SubCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */; };
+		CE6E1C65239D0AA700E8A06D /* SubCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6E1C63239D0AA700E8A06D /* SubCategoryCell.xib */; };
+		CE6E1C67239D0AFD00E8A06D /* SubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		CE288EE62394A68800B8E477 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CE288EEA2394CB0600B8E477 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		CE288EEB2394CB0600B8E477 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryCell.swift; sourceTree = "<group>"; };
+		CE6E1C63239D0AA700E8A06D /* SubCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCategoryCell.xib; sourceTree = "<group>"; };
+		CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 				88098B88237EC91400542FC4 /* ViewController.swift */,
 				88CD35342384559800CC1331 /* YoutubeViewController.swift */,
 				CE288EE62394A68800B8E477 /* CategoryViewController.swift */,
+				CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -124,6 +131,8 @@
 				8813FE2D2386E1EF007546CD /* YoutubeCell.swift */,
 				8813FE2E2386E1EF007546CD /* YoutubeCell.xib */,
 				CE288EEA2394CB0600B8E477 /* CategoryCell.swift */,
+				CE6E1C62239D0AA700E8A06D /* SubCategoryCell.swift */,
+				CE6E1C63239D0AA700E8A06D /* SubCategoryCell.xib */,
 				CE288EEB2394CB0600B8E477 /* CategoryCell.xib */,
 			);
 			path = View;
@@ -208,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6E1C65239D0AA700E8A06D /* SubCategoryCell.xib in Resources */,
 				CE288EED2394CB0600B8E477 /* CategoryCell.xib in Resources */,
 				88098B91237EC91600542FC4 /* LaunchScreen.storyboard in Resources */,
 				8813FE302386E1EF007546CD /* YoutubeCell.xib in Resources */,
@@ -269,11 +279,13 @@
 				88098B89237EC91400542FC4 /* ViewController.swift in Sources */,
 				88098B9D237EC96B00542FC4 /* YoutubeData.swift in Sources */,
 				88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */,
+				CE6E1C64239D0AA700E8A06D /* SubCategoryCell.swift in Sources */,
 				88098B85237EC91400542FC4 /* AppDelegate.swift in Sources */,
 				88255AF0237F1A6D000D4103 /* YoutubeModel.swift in Sources */,
 				88CD353323844C6400CC1331 /* K.swift in Sources */,
 				88098B87237EC91400542FC4 /* SceneDelegate.swift in Sources */,
 				88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */,
+				CE6E1C67239D0AFD00E8A06D /* SubCategoryViewController.swift in Sources */,
 				8813FE2F2386E1EF007546CD /* YoutubeCell.swift in Sources */,
 				CE288EEC2394CB0600B8E477 /* CategoryCell.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     // TableViewController로 가기 전 필요한 것들을 발생시키는 함수입니다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.videoSearchResultSegue {
+        if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확ㅇ
             let destinationVC = segue.destination as! YoutubeViewController
             
             if let text = self.searchText {
@@ -60,6 +60,7 @@ extension ViewController: UITextFieldDelegate {
         if let searchText = searchTextField.text {
             self.searchText = searchText
             self.performSegue(withIdentifier: K.videoSearchResultSegue, sender: self)
+            // 여기서 segue identifier 바꾸고,
         }
         
         searchTextField.text = ""

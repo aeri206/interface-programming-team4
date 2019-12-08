@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryViewController: UICollectionViewController  {
     var categoryNames = [String]()
+    var categoryInt: Int?
     
     @IBOutlet weak var category: UICollectionView!
     override func viewDidLoad(){
@@ -19,25 +20,7 @@ class CategoryViewController: UICollectionViewController  {
     }
     
     func setCategories(){
-        categoryNames = [
-            "스킨케어",
-            "클렌징",
-            "베이스메이크업",
-            "색조메이크업",
-            "마스크/팩",
-            "선케어",
-            "기능성화장품",
-            "바디/핸드/풋",
-            "헤어",
-            "네일",
-            "여성용품",
-            "미용렌즈",
-            "향수",
-            "기타제품",
-            "베이비&맘",
-            "바디라인",
-            "남성화장품"
-        ]
+        categoryNames = K.categoryNames
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -57,7 +40,22 @@ class CategoryViewController: UICollectionViewController  {
             return cell
 
         }
-
+    
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if segue.identifier == K.selectCategorySegue {
+            let destVC = segue.destination as! SubCategoryViewController
+            if let category = self.categoryInt {
+            destVC.categoryInt = category
+            }
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        categoryInt = indexPath.row
+        self.performSegue(withIdentifier: K.selectCategorySegue, sender: self)
+        
+    }
     
     
     
