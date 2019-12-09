@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SubCategoryViewController: UICollectionViewController {
+class SubCategoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var subCategory: UICollectionView!
     var categoryInt: Int?
@@ -75,6 +75,13 @@ class SubCategoryViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size:CGFloat = (subCategory.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: 50)
     }
 
 
