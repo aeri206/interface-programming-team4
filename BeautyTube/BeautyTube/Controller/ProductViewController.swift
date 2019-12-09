@@ -40,6 +40,10 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
                 destinationVC.searchText = text
             }
         }
+        else if segue.identifier == K.searchCategorySegue {
+            let destVC = segue.destination as! YoutubeViewController
+            destVC.searchText = self.title
+        }
     }
     
 

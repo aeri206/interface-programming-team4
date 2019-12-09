@@ -223,7 +223,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dVk-TK-H01"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Gj-PI-s3V"/>
+                    <navigationItem key="navigationItem" id="6Gj-PI-s3V">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="O9q-CL-xxc">
+                            <connections>
+                                <segue destination="bsu-aH-bEg" kind="show" identifier="SearchCategory" id="qhv-lh-ena"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productTable" destination="l80-PR-8B4" id="iTJ-UC-HCW"/>
                         <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="p52-v0-H2O"/>
@@ -234,4 +240,10 @@
             <point key="canvasLocation" x="2240.5797101449275" y="-583.25892857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qhv-lh-ena"/>
+    </inferredMetricsTieBreakers>
 </document>

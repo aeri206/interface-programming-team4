@@ -14,6 +14,7 @@ struct K {
     static let cellNibName = "YoutubeCell"
     static let defaultURL = "https://www.youtube.com/watch?v=XYeuvbhKy4I" // 걍 제가 좋아하는 노래 링크ㅋㅋ
     static let selectCategorySegue = "SelectCategory"
+    static let searchCategorySegue = "SearchCategory"
     static let selectSubCategorySegue = "SelectSubCategory"
     static let categoryNames = [
         "스킨케어",
