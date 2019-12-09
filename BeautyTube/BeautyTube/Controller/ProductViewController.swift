@@ -21,9 +21,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        productManager.delegate = self as? ProductManagerDelegate
-        productTable.delegate = self as? UITableViewDelegate
-        productTable.dataSource = self as? UITableViewDataSource
+        productManager.delegate = self
+        productTable.delegate = self
+        productTable.dataSource = self
         
         productTable.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
         
@@ -78,10 +78,15 @@ extension ProductViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductCell
         
         let url = URL(string: productData?.data[indexPath.row].img_url ?? "")
-        // print(url)
-        // let data = try? Data(contentsOf: url!)
+        if let realUrl = url {
+            let data = try? Data(contentsOf: realUrl)
+            if let img = data {
+                cell.thumbnailImageView.image = UIImage(data: img)
+            }
+            
+        }
         
-        // cell.thumbnailImageView.image = UIImage(data: data!)
+        
         cell.productLabel.text = productData?.data[indexPath.row].name
         cell.brandLabel.text = productData?.data[indexPath.row].brand
         

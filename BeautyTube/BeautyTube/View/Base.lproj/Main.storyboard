@@ -214,6 +214,10 @@
                                 <rect key="frame" x="0.0" y="126" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="84t-fW-SjW" id="mMu-zv-bHY"/>
+                                    <outlet property="delegate" destination="84t-fW-SjW" id="UYE-yg-AV3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -221,7 +225,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="6Gj-PI-s3V"/>
                     <connections>
-                        <outlet property="productTable" destination="l80-PR-8B4" id="vAx-a0-U8n"/>
+                        <outlet property="productTable" destination="l80-PR-8B4" id="iTJ-UC-HCW"/>
                         <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="p52-v0-H2O"/>
                     </connections>
                 </viewController>
