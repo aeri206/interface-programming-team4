@@ -14,6 +14,7 @@ class SubCategoryViewController: UICollectionViewController, UICollectionViewDel
     @IBOutlet weak var subCategory: UICollectionView!
     var categoryInt: Int?
     var subCategoryInt: Int?
+    var selectedCategoryInt: Int?
     var subCategoryNames = [String]()
     var subCategoryInfo = [
         // 0부터 시작한다고 가정.
@@ -119,13 +120,18 @@ class SubCategoryViewController: UICollectionViewController, UICollectionViewDel
             let destVC = segue.destination as! ProductViewController
             if let categoryID = self.subCategoryInt {
                 destVC.categoryID = categoryID
+                if let m_id = self.categoryInt, let s_id = self.selectedCategoryInt {
+                    let subs = subCategoryInfo[m_id]
+                    let x = subs?[s_id] ?? "Selection Error"
+                    destVC.title = x
+                }
             }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-        self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:indexPath.row)
+        selectedCategoryInt = indexPath.row
+        self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:self.selectedCategoryInt)
         print(self.subCategoryInt ?? -1)
         self.performSegue(withIdentifier: K.selectSubCategorySegue, sender: self)
         

@@ -18,6 +18,7 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         category.delegate = self
         category.dataSource = self
         setCategories()
+        title = "BeautyTube"
     }
     
     func setCategories(){
