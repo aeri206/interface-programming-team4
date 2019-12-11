@@ -8,15 +8,17 @@
 
 import UIKit
 
-class CategoryViewController: UICollectionViewController  {
+class CategoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
     var categoryNames = [String]()
     var categoryInt: Int?
     
     @IBOutlet weak var category: UICollectionView!
     override func viewDidLoad(){
         super.viewDidLoad()
-        
+        category.delegate = self
+        category.dataSource = self
         setCategories()
+        title = "BeautyTube"
     }
     
     func setCategories(){
@@ -26,10 +28,21 @@ class CategoryViewController: UICollectionViewController  {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 1
         }
-
-        override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return categoryNames.count
-        }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           return categoryNames.count
+       }
+       /* override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return
+        } */
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+           let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+           let size:CGFloat = (category.frame.size.width - space) / 2.0
+           return CGSize(width: size, height: 50)
+       }
+    
 
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 

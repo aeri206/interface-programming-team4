@@ -9,11 +9,12 @@
 import UIKit
 
 
-class SubCategoryViewController: UICollectionViewController {
+class SubCategoryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var subCategory: UICollectionView!
     var categoryInt: Int?
     var subCategoryInt: Int?
+    var selectedCategoryInt: Int?
     var subCategoryNames = [String]()
     var subCategoryInfo = [
         // 0부터 시작한다고 가정.
@@ -76,6 +77,13 @@ class SubCategoryViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size:CGFloat = (subCategory.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: 50)
+    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -112,13 +120,18 @@ class SubCategoryViewController: UICollectionViewController {
             let destVC = segue.destination as! ProductViewController
             if let categoryID = self.subCategoryInt {
                 destVC.categoryID = categoryID
+                if let m_id = self.categoryInt, let s_id = self.selectedCategoryInt {
+                    let subs = subCategoryInfo[m_id]
+                    let x = subs?[s_id] ?? "Selection Error"
+                    destVC.title = x
+                }
             }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-        self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:indexPath.row)
+        selectedCategoryInt = indexPath.row
+        self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:self.selectedCategoryInt)
         print(self.subCategoryInt ?? -1)
         self.performSegue(withIdentifier: K.selectSubCategorySegue, sender: self)
         
