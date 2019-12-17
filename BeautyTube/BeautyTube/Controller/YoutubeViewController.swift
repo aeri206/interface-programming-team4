@@ -12,6 +12,10 @@ import DateToolsSwift
 class YoutubeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var brandName: UILabel!
+    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var rankingPrice: UILabel!
+    @IBOutlet weak var nearestStore: UIButton!
     
     var youtubeManager = YoutubeManager()
     var videoData: YoutubeModel?
@@ -33,9 +37,24 @@ class YoutubeViewController: UIViewController {
             print("there is no searchText")
         }
         
+        // nearstStoreButton Custom
+        nearestStore.layer.borderWidth = 1.0
+        nearestStore.layer.borderColor = UIColor.systemPink.cgColor
+        nearestStore.layer.cornerRadius = 5
+        
+    }
+    
+    @IBAction func nearestStorePressed(_ sender: UIButton) {
+        
     }
 }
 
+// MARK: - <#Section Heading#>
+extension YoutubeViewController {
+    
+}
+
+// MARK: - YoutubeManagerDelegate
 extension YoutubeViewController: YoutubeManagerDelegate {
     
     func didUpdateVideos(_ youtubeManager: YoutubeManager, with video: YoutubeModel) {
@@ -52,6 +71,8 @@ extension YoutubeViewController: YoutubeManagerDelegate {
     
 }
 
+
+// MARK: - UITableViewDataSource
 extension YoutubeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videoData?.data.count ?? 1
@@ -74,10 +95,9 @@ extension YoutubeViewController: UITableViewDataSource {
         return cell
     }
     
-    
-    
 }
 
+// MARK: - UITableViewDelegate
 extension YoutubeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

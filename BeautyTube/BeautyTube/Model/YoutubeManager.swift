@@ -22,7 +22,7 @@ struct YoutubeManager {
     var delegate: YoutubeManagerDelegate?
     
     func fetchVideo(searchName: String) {
-        let urlString = "\(videoURL)&q=\(searchName)&key=\(APIKey)&maxResults=50&type=video&regionCode=KR"
+        let urlString = "\(videoURL)&q=\(searchName)&key=\(APIKey)&maxResults=10&type=video&regionCode=KR"
         performRequest(urlString: urlString)
     }
     
