@@ -30,12 +30,16 @@ class YoutubeViewController: UIViewController {
     var scorePrice: String?
     var productImgURL: String?
     var productID: Int?
-    
+    var star: UIImage?
+    var starfill: UIImage?
     var lon: Double?
     var lat: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.star = UIImage(systemName: "star")
+        self.starfill = UIImage(systemName: "star.fill")
         
         storeManager.delegate = self
         
@@ -73,11 +77,48 @@ class YoutubeViewController: UIViewController {
         nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
         nearestStoreButton.layer.cornerRadius = 5
         
+        
+        
+        let defaults = UserDefaults.standard
+        let saved = defaults.object(forKey: "Preference") as? [Int] ?? [Int]()
+        let thisID = self.productID ?? -1
+        var image = self.star
+        if saved.contains(thisID) {
+            image = self.starfill
+        }
+        let preferenceButton = UIBarButtonItem.init(image: image, style: .plain,
+                    target: self, action: #selector(favorite(sender:)))
+                
+        self.navigationItem.rightBarButtonItem = preferenceButton
+        
     }
     
     @IBAction func nearestStorePressed(_ sender: UIButton) {
         locationManager.requestLocation()
     }
+    
+    @objc func favorite(sender: UIBarButtonItem) {
+        
+        let defaults = UserDefaults.standard
+        var preferenceButton: UIBarButtonItem
+        var saved = defaults.object(forKey: "Preference") as? [Int] ?? [Int]()
+        let thisID = self.productID ?? -1
+        
+        if saved.contains(thisID) {
+            preferenceButton = UIBarButtonItem.init(image: self.star, style: .plain,
+                                                    target: self, action: #selector(favorite(sender:)))
+            if let index = saved.firstIndex(of: thisID) {
+                saved.remove(at: index)
+            }
+        } else {
+            preferenceButton = UIBarButtonItem.init(image: self.starfill, style: .plain,
+                                                    target: self, action: #selector(favorite(sender:)))
+            saved.append(thisID)
+        }
+        self.navigationItem.rightBarButtonItem = preferenceButton
+        defaults.set(saved, forKey: "Preference")
+       }
+
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -89,7 +130,6 @@ extension YoutubeViewController: CLLocationManagerDelegate {
             self.lat = location.coordinate.latitude
             self.lon = location.coordinate.longitude
             
-            print(self.lat, self.lon)
         }
     }
     

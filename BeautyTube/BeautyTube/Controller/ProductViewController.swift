@@ -25,6 +25,7 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var productID: Int?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -74,7 +75,6 @@ extension ProductViewController: ProductManagerDelegate {
     
     
     func didUpdateProducts(_ productManager: ProductManager, with product: ProductModel) {
-        print("didUpdateProduct")
         if Thread.isMainThread {
           // do stuff
             productData = product
@@ -118,7 +118,6 @@ extension ProductViewController {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(productData?.data[indexPath.row] ?? "")
         
         self.productName = productData?.data[indexPath.row].name
         self.brandName = productData?.data[indexPath.row].brand

@@ -19,8 +19,7 @@ struct StoreManager {
     
     func fetchStore(with productID: Int, latitude: Double, longitude: Double ) {
         let urlString = "http://cbadrama.kr/api/products/\(productID)/lat=\(latitude)&lon=\(longitude)"
-        print(urlString)
-
+        
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
         let url = URL(string: urlString)!
         let task = session.dataTask(with: url){ data, response, error in

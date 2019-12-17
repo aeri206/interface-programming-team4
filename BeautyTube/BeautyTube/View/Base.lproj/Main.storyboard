@@ -102,7 +102,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EXz-Lm-2By"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kme-vj-rT9"/>
+                    <navigationItem key="navigationItem" id="kme-vj-rT9">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="brandNameLabel" destination="ePq-Ek-ili" id="BdJ-kw-m6r"/>
                         <outlet property="nearestStoreButton" destination="BB9-zV-nCj" id="PaU-Rz-WKv"/>
@@ -179,7 +181,9 @@
                             <outlet property="delegate" destination="H6S-HS-ypf" id="cUA-OG-n8I"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="0aB-d1-eRK"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="category" destination="Agc-Df-VHD" id="sxJ-GH-eB7"/>
                         <segue destination="0cQ-Jb-VJL" kind="show" identifier="SelectCategory" id="8rd-Ls-e5J"/>
