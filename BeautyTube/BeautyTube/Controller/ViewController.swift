@@ -30,7 +30,7 @@ class ViewController: UIViewController {
             let destinationVC = segue.destination as! YoutubeViewController
             
             if let text = self.searchText {
-                destinationVC.searchText = text
+                destinationVC.productName = text
             }
         }
     }

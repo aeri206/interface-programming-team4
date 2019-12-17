@@ -1,20 +1,19 @@
 //
-//  ProductViewController.swift
+//  PreferenceViewController.swift
 //  BeautyTube
 //
-//  Created by user on 09/12/2019.
+//  Created by user on 18/12/2019.
 //  Copyright © 2019 Aeri Cho. All rights reserved.
 //
 
 import UIKit
 
-class ProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+class PreferenceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var productTable: UITableView!
+    @IBOutlet weak var preferenceTable: UITableView!
     
-    var categoryID: Int?
-    var productManager = ProductManager()
+    var preferenceManager = PreferenceManager()
     var productData: ProductModel?
     
     var productName: String?
@@ -25,22 +24,19 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var productID: Int?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        preferenceManager.delegate = self
+        preferenceTable.delegate = self
+        preferenceTable.dataSource = self
+        
+        preferenceTable.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
+        preferenceManager.fetchPreference()
+
         // Do any additional setup after loading the view.
-        
-        productManager.delegate = self
-        productTable.delegate = self
-        productTable.dataSource = self
-        
-        productTable.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
-        
-        if let id = self.categoryID {
-        productManager.fetchProduct(categoryID: id)
-        }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확인
             let destinationVC = segue.destination as! YoutubeViewController
             
@@ -56,43 +52,28 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
         }
-        else if segue.identifier == K.searchCategorySegue {
-            let destVC = segue.destination as! YoutubeViewController
-            destVC.productName = self.title
-        }
+        
     }
     
-
     
+
 }
 
-
-
-extension ProductViewController: ProductManagerDelegate {
+extension PreferenceViewController: PreferenceManagerDelegate {
     func didFailWithError(error: Error) {
         print(error)
     }
     
-    
-    func didUpdateProducts(_ productManager: ProductManager, with product: ProductModel) {
-        if Thread.isMainThread {
-          // do stuff
-            productData = product
-            //print(self.productData ?? "no dataa")
-            self.productTable.reloadData()
-        } else {
-        DispatchQueue.main.sync {
-            productData = product
-            // print(self.productData ?? "no dataa")
-            self.productTable.reloadData()
-            }
-        }
+    func didUpdatePreference(_ preferenceManager: PreferenceManager, with product: ProductModel, done: Bool) {
+        productData = product
+        if (done) {self.preferenceTable.reloadData()}
     }
 }
 
-extension ProductViewController {
+extension PreferenceViewController {
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as! ProductCell
         
@@ -104,11 +85,9 @@ extension ProductViewController {
             }
             
         }
-        
-        
-        
         cell.productLabel.text = productData?.data[indexPath.row].name
         cell.brandLabel.text = productData?.data[indexPath.row].brand
+        
         if let score =  productData?.data[indexPath.row].score, let price = productData?.data[indexPath.row].price{
             cell.scoreLabel.text = "★\(score) | \(price)원"
         }
@@ -116,13 +95,13 @@ extension ProductViewController {
            cell.scoreLabel.text = "";
         }
         
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productData?.data.count ?? 1
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -136,5 +115,4 @@ extension ProductViewController {
         self.performSegue(withIdentifier: K.videoSearchResultSegue, sender: self)
         // TODO ; Change Identifier
     }
-    
 }

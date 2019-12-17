@@ -19,6 +19,7 @@ class CategoryViewController: UICollectionViewController, UICollectionViewDelega
         category.dataSource = self
         setCategories()
         title = "BeautyTube"
+        navigationController?.navigationBar.tintColor = UIColor.systemPink
     }
     
     func setCategories(){

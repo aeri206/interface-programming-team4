@@ -18,6 +18,9 @@
 		8813FE2F2386E1EF007546CD /* YoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8813FE2D2386E1EF007546CD /* YoutubeCell.swift */; };
 		8813FE302386E1EF007546CD /* YoutubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8813FE2E2386E1EF007546CD /* YoutubeCell.xib */; };
 		88255AF0237F1A6D000D4103 /* YoutubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88255AEF237F1A6D000D4103 /* YoutubeModel.swift */; };
+		883779B923A8B2810059D4D8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883779B823A8B2810059D4D8 /* StoreManager.swift */; };
+		883779BB23A8B28C0059D4D8 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883779BA23A8B28C0059D4D8 /* StoreModel.swift */; };
+		883779BD23A8B2940059D4D8 /* StoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883779BC23A8B2940059D4D8 /* StoreData.swift */; };
 		88CD353323844C6400CC1331 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD353223844C6400CC1331 /* K.swift */; };
 		88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CD35342384559800CC1331 /* YoutubeViewController.swift */; };
 		96D626DC7A8EDDE1FE4CC143 /* Pods_BeautyTube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF8E4110CA604828A730B6C /* Pods_BeautyTube.framework */; };
@@ -33,6 +36,8 @@
 		CE6E1C71239D6AB400E8A06D /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C70239D6AB400E8A06D /* ProductData.swift */; };
 		CE6E1C74239D7E4100E8A06D /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E1C72239D7E4100E8A06D /* ProductCell.swift */; };
 		CE6E1C75239D7E4100E8A06D /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6E1C73239D7E4100E8A06D /* ProductCell.xib */; };
+		CEAC611123A9229900372E2A /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC611023A9229900372E2A /* PreferenceManager.swift */; };
+		CEAC611323A93C9300372E2A /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC611223A93C9300372E2A /* PreferenceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +56,9 @@
 		8813FE2D2386E1EF007546CD /* YoutubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeCell.swift; sourceTree = "<group>"; };
 		8813FE2E2386E1EF007546CD /* YoutubeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YoutubeCell.xib; sourceTree = "<group>"; };
 		88255AEF237F1A6D000D4103 /* YoutubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeModel.swift; sourceTree = "<group>"; };
+		883779B823A8B2810059D4D8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		883779BA23A8B28C0059D4D8 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
+		883779BC23A8B2940059D4D8 /* StoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreData.swift; sourceTree = "<group>"; };
 		88CD353223844C6400CC1331 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
 		88CD35342384559800CC1331 /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
 		88F4A5462390EF7B007A867A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -68,6 +76,8 @@
 		CE6E1C70239D6AB400E8A06D /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		CE6E1C72239D7E4100E8A06D /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		CE6E1C73239D7E4100E8A06D /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		CEAC611023A9229900372E2A /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		CEAC611223A93C9300372E2A /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +141,7 @@
 				88098B88237EC91400542FC4 /* ViewController.swift */,
 				88CD35342384559800CC1331 /* YoutubeViewController.swift */,
 				CE6E1C6A239D4C3B00E8A06D /* ProductViewController.swift */,
+				CEAC611223A93C9300372E2A /* PreferenceViewController.swift */,
 				CE288EE62394A68800B8E477 /* CategoryViewController.swift */,
 				CE6E1C66239D0AFD00E8A06D /* SubCategoryViewController.swift */,
 			);
@@ -161,7 +172,11 @@
 				88255AEF237F1A6D000D4103 /* YoutubeModel.swift */,
 				CE6E1C6C239D4C5E00E8A06D /* ProductModel.swift */,
 				CE6E1C6E239D586F00E8A06D /* ProductManager.swift */,
+				CEAC611023A9229900372E2A /* PreferenceManager.swift */,
 				CE6E1C70239D6AB400E8A06D /* ProductData.swift */,
+				883779B823A8B2810059D4D8 /* StoreManager.swift */,
+				883779BA23A8B28C0059D4D8 /* StoreModel.swift */,
+				883779BC23A8B2940059D4D8 /* StoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,13 +315,18 @@
 				88CD35352384559800CC1331 /* YoutubeViewController.swift in Sources */,
 				CE6E1C6D239D4C5E00E8A06D /* ProductModel.swift in Sources */,
 				CE6E1C64239D0AA700E8A06D /* SubCategoryCell.swift in Sources */,
+				883779BD23A8B2940059D4D8 /* StoreData.swift in Sources */,
 				88098B85237EC91400542FC4 /* AppDelegate.swift in Sources */,
 				88255AF0237F1A6D000D4103 /* YoutubeModel.swift in Sources */,
 				88CD353323844C6400CC1331 /* K.swift in Sources */,
+				CEAC611323A93C9300372E2A /* PreferenceViewController.swift in Sources */,
+				883779BB23A8B28C0059D4D8 /* StoreModel.swift in Sources */,
 				88098B87237EC91400542FC4 /* SceneDelegate.swift in Sources */,
+				883779B923A8B2810059D4D8 /* StoreManager.swift in Sources */,
 				88098B9B237EC95B00542FC4 /* YoutubeManager.swift in Sources */,
 				CE6E1C6F239D586F00E8A06D /* ProductManager.swift in Sources */,
 				CE6E1C71239D6AB400E8A06D /* ProductData.swift in Sources */,
+				CEAC611123A9229900372E2A /* PreferenceManager.swift in Sources */,
 				CE6E1C6B239D4C3B00E8A06D /* ProductViewController.swift in Sources */,
 				CE6E1C67239D0AFD00E8A06D /* SubCategoryViewController.swift in Sources */,
 				CE6E1C74239D7E4100E8A06D /* ProductCell.swift in Sources */,

@@ -2,28 +2,33 @@
 //  Productmanager.swift
 //  BeautyTube
 //
-//  Created by user on 09/12/2019.
+//  Created by user on 16/12/2019.
 //  Copyright © 2019 Aeri Cho. All rights reserved.
 //
 
 import Foundation
 
 
-protocol ProductManagerDelegate {
-    func didUpdateProducts(_ productManager: ProductManager, with product: ProductModel)
+protocol PreferenceManagerDelegate {
+    func didUpdatePreference(_ preferenceManager: PreferenceManager, with product: ProductModel, done: Bool)
     func didFailWithError(error: Error)
 }
 
-struct ProductManager {
+struct PreferenceManager {
     
-    var delegate: ProductManagerDelegate?
+    var delegate: PreferenceManagerDelegate?
     
-    func fetchProduct(categoryID: Int) {
-        let urlString = "http://cbadrama.kr/api/products/category/\(categoryID)"
-        print(urlString)
-
+    func fetchPreference() {
+        print("fetchPreference")
+        let defaults = UserDefaults.standard
+        let saved = defaults.object(forKey: "Preference") as? [Int] ?? [Int]()
+        var dataModel = ProductModel(data:[])
+        
+        for id in saved {
+        let uriString = "http://cbadrama.kr/api/products/\(id)/"
+        
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        let url = URL(string: urlString)!
+        let url = URL(string: uriString)!
         let task = session.dataTask(with: url){ data, response, error in
             if error != nil {
                 //add error hadnler function
@@ -43,8 +48,6 @@ struct ProductManager {
             do {
                 let decodedProduct = try JSONDecoder().decode([Product].self, from: data)
                     
-                var dataModel = ProductModel(data:[])
-                
                 for i in 0..<decodedProduct.count {
                     let item = decodedProduct[i]
                     let name = item.name
@@ -56,18 +59,20 @@ struct ProductManager {
                     let productData = ProductData(name: name, brand: brand, img_url: img_url, id: id, score: score, price: price)
                     
                     dataModel.data.append(productData)
+                    if (dataModel.data.count == saved.count) {
+                    self.delegate?.didUpdatePreference(self, with: dataModel, done: true)
+                    }
                 }
-                 self.delegate?.didUpdateProducts(self, with: dataModel)
                 }
              catch {
                 print(error)
             }
-            //
-            
-            
         }
         task.resume()
     }
+        
+        // end (delegate
+}
     
 }
 

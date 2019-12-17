@@ -132,7 +132,6 @@ class SubCategoryViewController: UICollectionViewController, UICollectionViewDel
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCategoryInt = indexPath.row
         self.subCategoryInt = calculateCategoryID(category: self.categoryInt, subCategory:self.selectedCategoryInt)
-        print(self.subCategoryInt ?? -1)
         self.performSegue(withIdentifier: K.selectSubCategorySegue, sender: self)
         
     }
