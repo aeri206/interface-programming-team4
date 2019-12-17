@@ -18,6 +18,9 @@ class YoutubeViewController: UIViewController {
     @IBOutlet weak var scorePriceLabel: UILabel!
     @IBOutlet weak var nearestStoreButton: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productDetailStackView: UIStackView!
+    @IBOutlet weak var youtubeActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var youtubeActivityStatusLabel: UILabel!
     
     var storeManager = StoreManager()
     var youtubeManager = YoutubeManager()
@@ -38,6 +41,18 @@ class YoutubeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        youtubeActivityIndicatorView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        youtubeActivityIndicatorView.startAnimating()
+        youtubeActivityStatusLabel.text = "유튜브 리뷰를 가져오는 중입니다 🥳"
+        
+        // custom spacing (UI)
+        productDetailStackView.setCustomSpacing(13, after: productImageView)
+        productDetailStackView.setCustomSpacing(3, after: brandNameLabel)
+        productDetailStackView.setCustomSpacing(8, after: productNameLabel)
+        productDetailStackView.setCustomSpacing(14, after: scorePriceLabel)
+        
+        //storeManagerDelgagte
         
         storeManager.delegate = self
         
@@ -138,7 +153,16 @@ extension YoutubeViewController: YoutubeManagerDelegate {
     func didUpdateVideos(_ youtubeManager: YoutubeManager, with video: YoutubeModel) {
         DispatchQueue.main.sync {
             videoData = video
-            self.tableView.reloadData()
+            
+            
+            if (videoData?.data.count)! > 0 {
+                self.tableView.reloadData()
+                youtubeActivityIndicatorView.stopAnimating()
+                youtubeActivityStatusLabel.text = ""
+            } else {
+                youtubeActivityIndicatorView.stopAnimating()
+                youtubeActivityStatusLabel.text = "관련 리뷰를 찾지 못했습니다 😭"
+            }
         }
         
     }
