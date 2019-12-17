@@ -23,5 +23,5 @@ struct ProductModel {
 */
 struct ProductData {
     let name, brand, img_url: String
-    let id: Int
+    let id, score, price: Int
 }

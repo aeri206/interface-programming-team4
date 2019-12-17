@@ -51,8 +51,9 @@ struct ProductManager {
                     let brand = item.brand_name
                     let img_url = item.img_url
                     let id = item.product_id
-                    
-                    let productData = ProductData(name: name, brand: brand, img_url: img_url, id: id)
+                    let score = item.score
+                    let price = item.price
+                    let productData = ProductData(name: name, brand: brand, img_url: img_url, id: id, score: score, price: price)
                     
                     dataModel.data.append(productData)
                 }

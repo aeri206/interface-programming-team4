@@ -8,6 +8,7 @@
 
 import UIKit
 import DateToolsSwift
+import CoreLocation
 
 class YoutubeViewController: UIViewController {
     
@@ -18,16 +19,29 @@ class YoutubeViewController: UIViewController {
     @IBOutlet weak var nearestStoreButton: UIButton!
     @IBOutlet weak var productImageView: UIImageView!
     
+    var storeManager = StoreManager()
     var youtubeManager = YoutubeManager()
+    let locationManager = CLLocationManager()
+    
     var videoData: YoutubeModel?
     
     var productName: String?
     var brandName: String?
     var scorePrice: String?
     var productImgURL: String?
+    var productID: Int?
+    
+    var lon: Double?
+    var lat: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        storeManager.delegate = self
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
         youtubeManager.delegate = self
         tableView.delegate = self
@@ -36,11 +50,12 @@ class YoutubeViewController: UIViewController {
         
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCellIdentifier)
         
-        if let name = productName, let brand = brandName, let img = productImgURL {
+        if let name = productName, let brand = brandName, let img = productImgURL, let scorePrice = scorePrice {
             youtubeManager.fetchVideo(searchName: name)
             
             productNameLabel.text = name
             brandNameLabel.text = brand
+            scorePriceLabel.text = scorePrice
             
             let data = try? Data(contentsOf: URL(string: img)!)
             productImageView.image =  UIImage(data: data!)
@@ -49,8 +64,8 @@ class YoutubeViewController: UIViewController {
             print("there is no product information")
         }
         
-        if let brandName = brandName {
-            brandNameLabel.text = brandName
+        if let productID = productID, let lat = lat, let lon = lon {
+            storeManager.fetchStore(with: productID, latitude: lat, longitude: lon)
         }
         
         // nearstStoreButton Custom
@@ -61,12 +76,35 @@ class YoutubeViewController: UIViewController {
     }
     
     @IBAction func nearestStorePressed(_ sender: UIButton) {
-        
+        locationManager.requestLocation()
     }
 }
 
-// MARK: - <#Section Heading#>
-extension YoutubeViewController {
+// MARK: - CLLocationManagerDelegate
+extension YoutubeViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            self.lat = location.coordinate.latitude
+            self.lon = location.coordinate.longitude
+            
+            print(self.lat, self.lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
+}
+
+// MARK: - StoreManagerDelegate
+extension YoutubeViewController: StoreManagerDelegate {
+    func didUpdateStores(_ storeManager: StoreManager, with product: StoreModel) {
+        print("did update Store")
+    }
+    
     
 }
 

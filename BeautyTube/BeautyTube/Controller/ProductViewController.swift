@@ -20,6 +20,9 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var productName: String?
     var brandName: String?
     var productImgURL: String?
+    var productPrice: Int?
+    var productScore: Int?
+    var productID: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +43,12 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확인
             let destinationVC = segue.destination as! YoutubeViewController
             
-            if let name = self.productName, let brand = self.brandName, let img = self.productImgURL {
+            if let name = self.productName, let brand = self.brandName, let img = self.productImgURL, let price = self.productPrice, let score = self.productScore, let id = self.productID {
                 destinationVC.productName = name
                 destinationVC.brandName = brand
                 destinationVC.productImgURL = img
+                destinationVC.scorePrice = "★\(score) | \(price)원"
+                destinationVC.productID = id
                 
             } else {
                 print("there is no product info")
@@ -118,6 +123,9 @@ extension ProductViewController {
         self.productName = productData?.data[indexPath.row].name
         self.brandName = productData?.data[indexPath.row].brand
         self.productImgURL = productData?.data[indexPath.row].img_url
+        self.productScore = productData?.data[indexPath.row].score
+        self.productPrice = productData?.data[indexPath.row].price
+        self.productID = productData?.data[indexPath.row].id
         
         self.performSegue(withIdentifier: K.videoSearchResultSegue, sender: self)
         // TODO ; Change Identifier
