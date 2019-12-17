@@ -24,12 +24,14 @@ class YoutubeViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var videoData: YoutubeModel?
+    var storeData: StoreModel?
     
     var productName: String?
     var brandName: String?
     var scorePrice: String?
     var productImgURL: String?
     var productID: Int?
+    var mapURL: String?
     
     var lon: Double?
     var lat: Double?
@@ -64,10 +66,6 @@ class YoutubeViewController: UIViewController {
             print("there is no product information")
         }
         
-        if let productID = productID, let lat = lat, let lon = lon {
-            storeManager.fetchStore(with: productID, latitude: lat, longitude: lon)
-        }
-        
         // nearstStoreButton Custom
         nearestStoreButton.layer.borderWidth = 1.0
         nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
@@ -76,7 +74,16 @@ class YoutubeViewController: UIViewController {
     }
     
     @IBAction func nearestStorePressed(_ sender: UIButton) {
-        locationManager.requestLocation()
+        
+        print(mapURL!)
+        guard let url = URL(string: "https://v5.map.naver.com/?query=랄라블라 신림점&type=SITE_1&queryRank=0") else {
+             return
+         }
+        if UIApplication.shared.canOpenURL(url) {
+             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+         }
+        
+        print("왜 안 될 까")
     }
 }
 
@@ -84,12 +91,9 @@ class YoutubeViewController: UIViewController {
 extension YoutubeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
+        if let location = locations.last, let productID = productID {
             locationManager.stopUpdatingLocation()
-            self.lat = location.coordinate.latitude
-            self.lon = location.coordinate.longitude
-            
-            print(self.lat, self.lon)
+            storeManager.fetchStore(with: productID, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
     
@@ -101,12 +105,29 @@ extension YoutubeViewController: CLLocationManagerDelegate {
 
 // MARK: - StoreManagerDelegate
 extension YoutubeViewController: StoreManagerDelegate {
-    func didUpdateStores(_ storeManager: StoreManager, with product: StoreModel) {
-        print("did update Store")
+    func didUpdateStores(_ storeManager: StoreManager, with store: StoreModel) {
+        
+        if Thread.isMainThread {
+            self.storeData = store
+//            print(self.storeData?.data[0].map_url ?? K.defaultURL)
+            
+            self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
+            
+            
+        } else {
+            DispatchQueue.main.sync {
+                self.storeData = store
+//                print(self.storeData?.data[0].map_url ?? K.defaultURL)
+                
+                self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
+            }
+        }
     }
-    
-    
 }
+
+
+
+
 
 // MARK: - YoutubeManagerDelegate
 extension YoutubeViewController: YoutubeManagerDelegate {
@@ -155,14 +176,13 @@ extension YoutubeViewController: UITableViewDataSource {
 extension YoutubeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(videoData?.data[indexPath.row].dateTime ?? indexPath.row)
-        
+//        print(videoData?.data[indexPath.row].dateTime ?? indexPath.row)
         
         if let link = URL(string: videoData?.data[indexPath.row].videoURL ?? K.defaultURL) {
-          UIApplication.shared.open(link)
+            UIApplication.shared.open(link)
         }
         
     }
-
+    
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol StoreManagerDelegate {
-    func didUpdateStores(_ storeManager: StoreManager, with product: StoreModel)
+    func didUpdateStores(_ storeManager: StoreManager, with store: StoreModel)
     func didFailWithError(error: Error)
 }
 
@@ -19,7 +19,7 @@ struct StoreManager {
     
     func fetchStore(with productID: Int, latitude: Double, longitude: Double ) {
         let urlString = "http://cbadrama.kr/api/products/\(productID)/lat=\(latitude)&lon=\(longitude)"
-        print(urlString)
+//        print(urlString)
 
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
         let url = URL(string: urlString)!
@@ -50,8 +50,12 @@ struct StoreManager {
                     let storeData = StoreData(name: item.name, brand_name: item.brand_name, img_url: item.img_url, description: item.description, seller: item.seller, map_url: item.map_url, category_name: item.category_name, id: item.id, score: item.score, price: item.price, product_id: item.product_id, raking: item.raking, category: item.category)
                     
                     dataModel.data.append(storeData)
+//                    print(storeData)
                 }
                  self.delegate?.didUpdateStores(self, with: dataModel)
+                
+//                print("update completed")
+        
                 }
              catch {
                 print(error)
