@@ -35,23 +35,6 @@ class PreferenceViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
     
-    
-
-}
-
-extension PreferenceViewController: PreferenceManagerDelegate {
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-    
-    func didUpdatePreference(_ preferenceManager: PreferenceManager, with product: ProductModel, done: Bool) {
-        productData = product
-        if (done) {self.preferenceTable.reloadData()}
-    }
-}
-
-extension PreferenceViewController {
-    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확인
@@ -73,7 +56,21 @@ extension PreferenceViewController {
     }
     
     
+
+}
+
+extension PreferenceViewController: PreferenceManagerDelegate {
+    func didFailWithError(error: Error) {
+        print(error)
+    }
     
+    func didUpdatePreference(_ preferenceManager: PreferenceManager, with product: ProductModel, done: Bool) {
+        productData = product
+        if (done) {self.preferenceTable.reloadData()}
+    }
+}
+
+extension PreferenceViewController {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,6 +87,14 @@ extension PreferenceViewController {
         }
         cell.productLabel.text = productData?.data[indexPath.row].name
         cell.brandLabel.text = productData?.data[indexPath.row].brand
+        
+        if let score =  productData?.data[indexPath.row].score, let price = productData?.data[indexPath.row].price{
+            cell.scoreLabel.text = "★\(score) | \(price)원"
+        }
+        else{
+           cell.scoreLabel.text = "";
+        }
+        
         
         return cell
     }
