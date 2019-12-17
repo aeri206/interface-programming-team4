@@ -106,8 +106,15 @@ extension ProductViewController {
         }
         
         
+        
         cell.productLabel.text = productData?.data[indexPath.row].name
         cell.brandLabel.text = productData?.data[indexPath.row].brand
+        if let score =  productData?.data[indexPath.row].score, let price = productData?.data[indexPath.row].price{
+            cell.scoreLabel.text = "★\(score) | \(price)원"
+        }
+        else{
+           cell.scoreLabel.text = "";
+        }
         
         return cell
     }

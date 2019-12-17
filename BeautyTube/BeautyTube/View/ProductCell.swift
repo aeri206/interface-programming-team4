@@ -13,6 +13,7 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     
     

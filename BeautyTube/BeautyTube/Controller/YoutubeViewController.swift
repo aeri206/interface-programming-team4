@@ -75,9 +75,12 @@ class YoutubeViewController: UIViewController {
     
     @IBAction func nearestStorePressed(_ sender: UIButton) {
         
-        print(mapURL!)
-        guard let url = URL(string: "https://v5.map.naver.com/?query=랄라블라 신림점&type=SITE_1&queryRank=0") else {
+        
+        let urlString = mapURL?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//        print(urlString)
+        guard let url = URL(string: urlString ?? K.defaultURL) else {
              return
+            
          }
         if UIApplication.shared.canOpenURL(url) {
              UIApplication.shared.open(url, options: [:], completionHandler: nil)
