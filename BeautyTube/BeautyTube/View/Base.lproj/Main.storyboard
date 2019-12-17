@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PlA-1y-Uoj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2982.608695652174" y="-583.25892857142856"/>
+            <point key="canvasLocation" x="3158" y="-705"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UFA-YY-Om7">
@@ -182,7 +182,13 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="0aB-d1-eRK"/>
+                    <navigationItem key="navigationItem" id="RKB-Nu-8hC">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star.circle" catalog="system" id="4Cm-lm-PDN">
+                            <connections>
+                                <segue destination="rap-bS-V8B" kind="show" id="yaI-Gw-GGz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="category" destination="Agc-Df-VHD" id="sxJ-GH-eB7"/>
@@ -238,7 +244,13 @@
                             <outlet property="delegate" destination="0cQ-Jb-VJL" id="OKi-QQ-qGl"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="r7w-iB-QUh"/>
+                    <navigationItem key="navigationItem" id="r7w-iB-QUh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star.circle" catalog="system" id="3NK-wV-ehQ">
+                            <connections>
+                                <segue destination="rap-bS-V8B" kind="show" id="VZH-7o-tWR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="subCategory" destination="3bT-Tm-bHH" id="tUf-zq-bi0"/>
                         <segue destination="wTf-Ag-C8L" kind="show" identifier="SelectSubCategory" id="f49-gK-tcV"/>
@@ -246,7 +258,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJ7-jp-PHz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="-583"/>
+            <point key="canvasLocation" x="1368" y="-583"/>
         </scene>
         <!--Product View Controller-->
         <scene sceneID="QHu-DJ-zFz">
@@ -270,9 +282,9 @@
                         <viewLayoutGuide key="safeArea" id="dVk-TK-H01"/>
                     </view>
                     <navigationItem key="navigationItem" id="6Gj-PI-s3V">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="O9q-CL-xxc">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star.circle" catalog="system" id="YhV-kx-dvm">
                             <connections>
-                                <segue destination="bsu-aH-bEg" kind="show" identifier="SearchCategory" id="qhv-lh-ena"/>
+                                <segue destination="rap-bS-V8B" kind="show" id="5Ys-MK-DDa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -283,13 +295,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5x-M9-wub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240.5797101449275" y="-583.25892857142856"/>
+            <point key="canvasLocation" x="2245" y="-223"/>
+        </scene>
+        <!--Preference View Controller-->
+        <scene sceneID="8oJ-p7-J42">
+            <objects>
+                <viewController id="rap-bS-V8B" customClass="PreferenceViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5tc-fG-QfN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wAo-1T-y29" userLabel="PreferProduct Table">
+                                <rect key="frame" x="0.0" y="86" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5tc-fG-QfN" id="6NQ-OF-wQk"/>
+                                    <outlet property="delegate" destination="5tc-fG-QfN" id="lV0-Hr-VQZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rJI-rO-fNs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ndm-8M-ptu"/>
+                    <connections>
+                        <outlet property="preferenceTable" destination="wAo-1T-y29" id="FM7-ZY-uWr"/>
+                        <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="fUm-Kd-rtb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wca-oy-Qcp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2193" y="-919"/>
         </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="star.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qhv-lh-ena"/>
+        <segue reference="5Ys-MK-DDa"/>
+        <segue reference="fUm-Kd-rtb"/>
     </inferredMetricsTieBreakers>
 </document>
