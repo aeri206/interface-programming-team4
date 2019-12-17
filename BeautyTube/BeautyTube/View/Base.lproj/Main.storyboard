@@ -336,7 +336,7 @@
             </objects>
             <point key="canvasLocation" x="2193" y="-147"/>
         </scene>
-        <!--Preference View Controller-->
+        <!--즐겨찾기-->
         <scene sceneID="8oJ-p7-J42">
             <objects>
                 <viewController id="rap-bS-V8B" customClass="PreferenceViewController" customModule="BeautyTube" customModuleProvider="target" sceneMemberID="viewController">
@@ -357,7 +357,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="rJI-rO-fNs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ndm-8M-ptu"/>
+                    <navigationItem key="navigationItem" title="즐겨찾기" id="OdV-bw-uga"/>
                     <connections>
                         <outlet property="preferenceTable" destination="wAo-1T-y29" id="FM7-ZY-uWr"/>
                         <segue destination="bsu-aH-bEg" kind="show" identifier="goToResult" id="fUm-Kd-rtb"/>
