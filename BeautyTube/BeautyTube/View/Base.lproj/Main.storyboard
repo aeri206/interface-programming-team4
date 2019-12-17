@@ -65,22 +65,15 @@
                                 <rect key="frame" x="132" y="98" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="brand_name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-Ek-ili">
-                                <rect key="frame" x="172" y="256" width="70" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cky-09-x8p">
-                                <rect key="frame" x="185" y="273" width="45" height="21"/>
+                                <rect key="frame" x="12" y="273" width="390" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ranking, price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlY-Dy-GXi">
-                                <rect key="frame" x="155" y="300" width="105" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ranking, price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlY-Dy-GXi">
+                                <rect key="frame" x="12" y="302" width="390" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -98,16 +91,24 @@
                                     <action selector="nearestStorePressed:" destination="bsu-aH-bEg" eventType="touchUpInside" id="Ckx-Ey-oYX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="brand_name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-Ek-ili">
+                                <rect key="frame" x="12" y="256" width="390" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="EXz-Lm-2By"/>
                     </view>
                     <navigationItem key="navigationItem" id="kme-vj-rT9"/>
                     <connections>
-                        <outlet property="brandName" destination="ePq-Ek-ili" id="ErU-MT-zFs"/>
-                        <outlet property="nearestStore" destination="BB9-zV-nCj" id="PaU-Rz-WKv"/>
-                        <outlet property="productName" destination="Cky-09-x8p" id="PrO-FL-zPA"/>
-                        <outlet property="rankingPrice" destination="GlY-Dy-GXi" id="juV-bq-BxT"/>
+                        <outlet property="brandNameLabel" destination="ePq-Ek-ili" id="BdJ-kw-m6r"/>
+                        <outlet property="nearestStoreButton" destination="BB9-zV-nCj" id="PaU-Rz-WKv"/>
+                        <outlet property="productImageView" destination="kLH-9l-zdI" id="ZGn-1K-sT6"/>
+                        <outlet property="productNameLabel" destination="Cky-09-x8p" id="PrO-FL-zPA"/>
+                        <outlet property="scorePriceLabel" destination="GlY-Dy-GXi" id="juV-bq-BxT"/>
                         <outlet property="tableView" destination="H6a-Ob-fzU" id="qyK-cu-XfB"/>
                     </connections>
                 </viewController>

@@ -12,14 +12,19 @@ import DateToolsSwift
 class YoutubeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var brandName: UILabel!
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var rankingPrice: UILabel!
-    @IBOutlet weak var nearestStore: UIButton!
+    @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var scorePriceLabel: UILabel!
+    @IBOutlet weak var nearestStoreButton: UIButton!
+    @IBOutlet weak var productImageView: UIImageView!
     
     var youtubeManager = YoutubeManager()
     var videoData: YoutubeModel?
-    var searchText: String?
+    
+    var productName: String?
+    var brandName: String?
+    var scorePrice: String?
+    var productImgURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +32,31 @@ class YoutubeViewController: UIViewController {
         youtubeManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        title = searchText ?? ""
+        title = productName ?? ""
         
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCellIdentifier)
         
-        if let text = searchText {
-            youtubeManager.fetchVideo(searchName: text)
+        if let name = productName, let brand = brandName, let img = productImgURL {
+            youtubeManager.fetchVideo(searchName: name)
+            
+            productNameLabel.text = name
+            brandNameLabel.text = brand
+            
+            let data = try? Data(contentsOf: URL(string: img)!)
+            productImageView.image =  UIImage(data: data!)
+            
         } else {
-            print("there is no searchText")
+            print("there is no product information")
+        }
+        
+        if let brandName = brandName {
+            brandNameLabel.text = brandName
         }
         
         // nearstStoreButton Custom
-        nearestStore.layer.borderWidth = 1.0
-        nearestStore.layer.borderColor = UIColor.systemPink.cgColor
-        nearestStore.layer.cornerRadius = 5
+        nearestStoreButton.layer.borderWidth = 1.0
+        nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
+        nearestStoreButton.layer.cornerRadius = 5
         
     }
     

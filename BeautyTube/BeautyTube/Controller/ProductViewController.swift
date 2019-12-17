@@ -16,7 +16,11 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     var categoryID: Int?
     var productManager = ProductManager()
     var productData: ProductModel?
-    var searchProduct: String?
+    
+    var productName: String?
+    var brandName: String?
+    var productImgURL: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,16 +37,22 @@ class ProductViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확ㅇ
+        if segue.identifier == K.videoSearchResultSegue { // 이걸로 다 되었는지 확인
             let destinationVC = segue.destination as! YoutubeViewController
             
-            if let text = self.searchProduct {
-                destinationVC.searchText = text
+            if let name = self.productName, let brand = self.brandName, let img = self.productImgURL {
+                destinationVC.productName = name
+                destinationVC.brandName = brand
+                destinationVC.productImgURL = img
+                
+            } else {
+                print("there is no product info")
             }
+            
         }
         else if segue.identifier == K.searchCategorySegue {
             let destVC = segue.destination as! YoutubeViewController
-            destVC.searchText = self.title
+            destVC.productName = self.title
         }
     }
     
@@ -104,10 +114,13 @@ extension ProductViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(productData?.data[indexPath.row] ?? "")
-        self.searchProduct = productData?.data[indexPath.row].name
+        
+        self.productName = productData?.data[indexPath.row].name
+        self.brandName = productData?.data[indexPath.row].brand
+        self.productImgURL = productData?.data[indexPath.row].img_url
+        
         self.performSegue(withIdentifier: K.videoSearchResultSegue, sender: self)
         // TODO ; Change Identifier
-        
     }
     
 }
