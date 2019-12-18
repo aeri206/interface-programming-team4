@@ -1,7 +1,7 @@
 # interface-programming-team4
 2019 Fall Interface Programming
 ## Role Description
-- 박민주(minjupark): Category, SubCategory View, 
+- 박민주(minjupark): Category, SubCategory View, Product View & Model
 - 백승호(100seugnho, Seungho Baek): Youtube와 관련된 MVC, API구현
 - 손준혁(happysmileboy): custom API Server 구현, 웹 크롤링
 - 조애리(aeri206): Category, SubCategoryVC & Model, PreferenceVC & Model, Product MVC 구현
