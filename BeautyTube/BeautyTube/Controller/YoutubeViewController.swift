@@ -42,20 +42,27 @@ class YoutubeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Notifies user to be updated by ActivityIndicator
         youtubeActivityIndicatorView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         youtubeActivityIndicatorView.startAnimating()
-        youtubeActivityStatusLabel.text = "유튜브 리뷰를 가져오는 중입니다 🥳"
+        youtubeActivityStatusLabel.text = K.youtubeLoading
         
-        // custom spacing (UI)
+        // custom UI
+        title = productName ?? ""
+        
         productDetailStackView.setCustomSpacing(13, after: productImageView)
         productDetailStackView.setCustomSpacing(3, after: brandNameLabel)
         productDetailStackView.setCustomSpacing(8, after: productNameLabel)
         productDetailStackView.setCustomSpacing(14, after: scorePriceLabel)
         
-        //storeManagerDelgagte
-        self.star = UIImage(systemName: "star")
-        self.starfill = UIImage(systemName: "star.fill")
+        self.star = UIImage(systemName: K.star)
+        self.starfill = UIImage(systemName: K.starFill)
         
+        nearestStoreButton.layer.borderWidth = 1.0
+        nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
+        nearestStoreButton.layer.cornerRadius = 5
+        
+        // delegates Declaration
         storeManager.delegate = self
         
         locationManager.delegate = self
@@ -65,10 +72,11 @@ class YoutubeViewController: UIViewController {
         youtubeManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        title = productName ?? ""
         
+        // tableview register
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCellIdentifier)
         
+        // productDetail update
         if let name = productName, let brand = brandName, let img = productImgURL, let scorePrice = scorePrice {
             youtubeManager.fetchVideo(searchName: name)
             
@@ -80,18 +88,12 @@ class YoutubeViewController: UIViewController {
             productImageView.image =  UIImage(data: data!)
             
         } else {
-            print("there is no product information")
+            print(K.noProductInfo)
         }
         
-        // nearstStoreButton Custom
-        nearestStoreButton.layer.borderWidth = 1.0
-        nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
-        nearestStoreButton.layer.cornerRadius = 5
-        
-        
-        
+        // save(즐겨찾기) feature
         let defaults = UserDefaults.standard
-        let saved = defaults.object(forKey: "Preference") as? [Int] ?? [Int]()
+        let saved = defaults.object(forKey: K.saveKey) as? [Int] ?? [Int]()
         let thisID = self.productID ?? -1
         var image = self.star
         if saved.contains(thisID) {
@@ -106,9 +108,8 @@ class YoutubeViewController: UIViewController {
     
     @IBAction func nearestStorePressed(_ sender: UIButton) {
         
-        
         let urlString = mapURL?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//        print(urlString)
+
         guard let url = URL(string: urlString ?? K.defaultURL) else {
              return
             
@@ -117,14 +118,13 @@ class YoutubeViewController: UIViewController {
              UIApplication.shared.open(url, options: [:], completionHandler: nil)
          }
         
-        print("왜 안 될 까")
     }
     
     @objc func favorite(sender: UIBarButtonItem) {
         
         let defaults = UserDefaults.standard
         var preferenceButton: UIBarButtonItem
-        var saved = defaults.object(forKey: "Preference") as? [Int] ?? [Int]()
+        var saved = defaults.object(forKey: K.saveKey) as? [Int] ?? [Int]()
         let thisID = self.productID ?? -1
         
         if saved.contains(thisID) {
@@ -139,7 +139,7 @@ class YoutubeViewController: UIViewController {
             saved.append(thisID)
         }
         self.navigationItem.rightBarButtonItem = preferenceButton
-        defaults.set(saved, forKey: "Preference")
+        defaults.set(saved, forKey: K.saveKey)
        }
 
 }
@@ -167,7 +167,6 @@ extension YoutubeViewController: StoreManagerDelegate {
         
         if Thread.isMainThread {
             self.storeData = store
-//            print(self.storeData?.data[0].map_url ?? K.defaultURL)
             
             self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
             
@@ -175,7 +174,6 @@ extension YoutubeViewController: StoreManagerDelegate {
         } else {
             DispatchQueue.main.sync {
                 self.storeData = store
-//                print(self.storeData?.data[0].map_url ?? K.defaultURL)
                 
                 self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
             }
@@ -201,7 +199,7 @@ extension YoutubeViewController: YoutubeManagerDelegate {
                 youtubeActivityStatusLabel.text = ""
             } else {
                 youtubeActivityIndicatorView.stopAnimating()
-                youtubeActivityStatusLabel.text = "관련 리뷰를 찾지 못했습니다 😭"
+                youtubeActivityStatusLabel.text = K.youtubeLoadFailed
             }
         }
         
@@ -223,7 +221,7 @@ extension YoutubeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCellIdentifier, for: indexPath) as! YoutubeCell
         
-        let url = URL(string: videoData?.data[indexPath.row].imageURL ?? "https://cdn.shopify.com/s/files/1/0783/9473/t/3/assets/twitter-white.png?0")
+        let url = URL(string: videoData?.data[indexPath.row].imageURL ?? K.defaultImageURL)
         let data = try? Data(contentsOf: url!)
         
         

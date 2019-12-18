@@ -13,9 +13,16 @@ struct K {
     static let tableCellIdentifier = "ReusableCell"
     static let cellNibName = "YoutubeCell"
     static let defaultURL = "https://www.youtube.com/watch?v=XYeuvbhKy4I" // 걍 제가 좋아하는 노래 링크ㅋㅋ
+    static let defaultImageURL = "https://cdn.shopify.com/s/files/1/0783/9473/t/3/assets/twitter-white.png?0"
     static let selectCategorySegue = "SelectCategory"
     static let searchCategorySegue = "SearchCategory"
     static let selectSubCategorySegue = "SelectSubCategory"
+    static let youtubeLoading = "유튜브 리뷰를 가져오는 중입니다 🥳"
+    static let noProductInfo = "there is no product information"
+    static let saveKey = "Preference"
+    static let youtubeLoadFailed = "관련 리뷰를 찾지 못했습니다 😭"
+    static let star = "star"
+    static let starFill = "star.fill"
     static let categoryNames = [
         "스킨케어",
         "클렌징",

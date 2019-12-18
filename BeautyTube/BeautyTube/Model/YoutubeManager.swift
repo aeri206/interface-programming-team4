@@ -17,9 +17,10 @@ protocol YoutubeManagerDelegate {
 struct YoutubeManager {
     
     let videoURL = "https://www.googleapis.com/youtube/v3/search?part=snippet"
-    let APIKey = "AIzaSyD48xagWH73WHHrf7YTJ8I8E53Iz1Mn0gg"
+    let APIKey = "AIzaSyAvXUgDdCHfRgcWyba8d9ibSjm8xjzVoZM"
 //    AIzaSyCD4_LqV6LtvdiaEWBz_9c03vVMfUNYzHU '100seungho'
 //    AIzaSyD48xagWH73WHHrf7YTJ8I8E53Iz1Mn0gg '100seungho 2'
+//    AIzaSyAvXUgDdCHfRgcWyba8d9ibSjm8xjzVoZM '100seungho 3'
     var delegate: YoutubeManagerDelegate?
     
     func fetchVideo(searchName: String) {
