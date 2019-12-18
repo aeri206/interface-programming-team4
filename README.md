@@ -1,5 +1,11 @@
 # interface-programming-team4
 2019 Fall Interface Programming
+## Role Description
+- 박민주(minjupark): Category, SubCategory View, 
+- 백승호(100seugnho, Seungho Baek): Youtube와 관련된 MVC, API구현
+- 손준혁(happysmileboy): custom API Server 구현, 웹 크롤링
+- 조애리(aeri206): Category, SubCategoryVC & Model, PreferenceVC & Model, Product MVC 구현
+
 
 for more information about **MVC design pattern** checkout [iOS: Three ways to pass data from Model to Controller](https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336) and [Modern MVC](https://medium.com/ios-os-x-development/modern-mvc-39042a9097ca)
 
