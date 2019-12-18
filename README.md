@@ -3,7 +3,8 @@
 
 for more information about **MVC design pattern** checkout [iOS: Three ways to pass data from Model to Controller](https://medium.com/@stasost/ios-three-ways-to-pass-data-from-model-to-controller-b47cc72a4336) and [Modern MVC](https://medium.com/ios-os-x-development/modern-mvc-39042a9097ca)
 
-![Image of MVC design Pattern](http://natashatherobot.com/wp-content/uploads/Screen-Shot-2014-04-28-at-6.13.10-AM.png)
+![Image of MVC design Pattern of Our Project](https://user-images.githubusercontent.com/37105201/71048532-e1718600-2182-11ea-9d59-5c99dc11047d.png)
+
 
 
 ## Model
@@ -33,9 +34,32 @@ YoutubeAPI가 제공하는 JSON data file에서 필요한 정보들을 찾기 �
 ### YoutubeModel.swift
 동영상 정보를 내부적으로 활용하기 위한 data 구조입니다. 
 
+### ProductManager.swift
+
+### ProductData.swift
+
+### ProductModel.swift
+
+### PreferenceManager.swift
+
+### StoreManager.swift
+
+### StoreData.swift
+
+### StoreModel.swift
+
+
 ## View
 
 ### Main.stroyboard
+
+### YoutubeCell
+
+### CategoryCell
+
+### SubCategoryCell
+
+### ProductCell
 
 
 ## Controller
@@ -43,3 +67,11 @@ YoutubeAPI가 제공하는 JSON data file에서 필요한 정보들을 찾기 �
 ### ViewController.swift
 
 ### YoutubeViewController.swift
+
+### CategoryViewController.swift
+
+### SubCategoryViewController.swift
+
+### ProductViewController.swift
+
+### PreferenceViewController.swift
