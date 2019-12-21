@@ -59,8 +59,10 @@ class YoutubeViewController: UIViewController {
         self.starfill = UIImage(systemName: K.starFill)
         
         nearestStoreButton.layer.borderWidth = 1.0
-        nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
         nearestStoreButton.layer.cornerRadius = 5
+        nearestStoreButton.layer.borderColor = UIColor.gray.cgColor
+        nearestStoreButton.setTitleColor(UIColor.gray, for: .normal)
+        nearestStoreButton.isEnabled = false
         
         // delegates Declaration
         storeManager.delegate = self
@@ -78,6 +80,7 @@ class YoutubeViewController: UIViewController {
         
         // productDetail update
         if let name = productName, let brand = brandName, let img = productImgURL, let scorePrice = scorePrice {
+            
             youtubeManager.fetchVideo(searchName: name)
             
             productNameLabel.text = name
@@ -170,12 +173,17 @@ extension YoutubeViewController: StoreManagerDelegate {
             
             self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
             
+            nearestStoreButton.isEnabled = true
+            nearestStoreButton.layer.borderColor = UIColor.systemPink.cgColor
+            nearestStoreButton.setTitleColor(UIColor.systemPink, for: .normal)
             
         } else {
             DispatchQueue.main.sync {
                 self.storeData = store
                 
                 self.mapURL = self.storeData?.data[0].map_url ?? K.defaultURL
+                
+                nearestStoreButton.isEnabled = true
             }
         }
     }
